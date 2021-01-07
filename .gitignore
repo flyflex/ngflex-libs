@@ -1,0 +1,6 @@
+lib/
+node_modules/
+buildcache/
+jest-cache/
+.coverage/
+.DS_Store
