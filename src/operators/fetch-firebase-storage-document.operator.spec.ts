@@ -1,52 +1,6 @@
 import { of } from 'rxjs';
 
-import { ActionTypes } from '../models/action-types.model';
 import { fetchFirebaseStorageDocument } from './fetch-firebase-storage-document.operator';
-
-class AddEntities {
-  public type = 'addEntities';
-  constructor(public payload: any, public parentId?: string) { }
-}
-class UpdateEntities {
-  public type = 'updateEntities';
-  constructor(public payload: any, public parentId?: string) { }
-}
-class RemoveEntities {
-  public type = 'removeEntities';
-  constructor(public payload: any, public parentId?: string) { }
-}
-class LoadNoResultsEntities {
-  public type = 'loadNoResultsEntities';
-  constructor(public parentId?: string) { }
-}
-
-const actionsMocks: ActionTypes = {
-  loadNoResults: LoadNoResultsEntities,
-  addMany: AddEntities,
-  upsertMany: UpdateEntities,
-  removeMany: RemoveEntities,
-};
-
-const action1 = { type: 'added', payload: { id: 'id1', data: 'value1' } };
-const action2 = { type: 'added', payload: { id: 'id2', data: 'value2' } };
-const action3 = { type: 'removed', payload: { id: 'id3', data: 'value3' } };
-const action4 = { type: 'modified', payload: { id: 'id2', data: 'changedValue2' } };
-const GROUPED_ACTIONS = [
-  {
-    action: 'addMany',
-    payload: [action1.payload, action2.payload],
-  },
-  {
-    action: 'removeMany',
-    payload: [action3.payload],
-  },
-  {
-    action: 'upsertMany',
-    payload: [action4.payload],
-  },
-];
-
-const PARENT_ID = 'someParentId1';
 
 const FirestorageMock = {
   ref: (path) => ({
