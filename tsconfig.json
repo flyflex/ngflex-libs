@@ -18,6 +18,7 @@
   ],
   "exclude": [
     "**/*.spec.ts",
+    "src/tests",
     "node_modules"
   ],
   "references": []
