@@ -6,10 +6,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "FlyFlex",
-  "homepage": "https://github.com/flyflex/ng-flex-ngrx-firebase",
+  "homepage": "https://github.com/flyflex/ngflex-ngrx-firebase",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flyflex/ng-flex-ngrx-firebase"
+    "url": "https://github.com/flyflex/ngflex-ngrx-firebase"
   },
   "keywords": [
     "angular",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@angular/fire": "6.1.4",
     "@firebase/app-types": "0.6.1",
-    "@types/jest": "26.0.19",
+    "@types/jest": "26.0.20",
     "@typescript-eslint/eslint-plugin": "4.12.0",
     "@typescript-eslint/parser": "4.12.0",
     "eslint": "7.17.0",
