@@ -1,4 +1,4 @@
-import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 import { ActionTypes } from './action-types.model';
 
