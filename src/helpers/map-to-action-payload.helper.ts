@@ -1,4 +1,4 @@
-import { DocumentChangeAction } from '@angular/fire/firestore';
+import { DocumentChangeAction } from '@angular/fire/compat/firestore';
 
 /**
  * Map a firestore document action to NGRX action payload

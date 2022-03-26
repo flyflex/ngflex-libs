@@ -1,4 +1,4 @@
-import { DocumentChangeType } from '@angular/fire/firestore';
+import { DocumentChangeType } from '@angular/fire/compat/firestore';
 
 import { WithId } from './with-id.model';
 
