@@ -1,6 +1,6 @@
 {
   "name": "@ngflex/ngrx-firebase",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "description": "NGFlex NGRX firebase operators and utils",
   "main": "lib/index.js",
@@ -21,19 +21,27 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "yarn eslint . --ext .ts",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "files": [
     "lib/**/*"
   ],
   "peerDependencies": {
     "@angular/fire": "^7.0.0",
+    "@ngrx/store": ">= 11.0.0",
     "firebase": "^9.0.0",
     "rxjs": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ngrx/store": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@angular/fire": "7.3.0",
     "@firebase/app-types": "0.7.0",
+    "@ngrx/store": "13.0.2",
     "@types/jest": "27.4.1",
     "@typescript-eslint/eslint-plugin": "5.16.0",
     "@typescript-eslint/parser": "5.16.0",

@@ -10,16 +10,16 @@ import { WithId } from '../models/with-id.model';
  */
 export const groupByAction = <T>() => map((documentChanges: DocumentChange<T>[]): StoreAction<T>[] => {
   if (!documentChanges.length) {
-    return [{ action: 'loadNoResults' }];
+    return [{ actionName: 'loadNoResults' }];
   }
 
   return Object.values(documentChanges.reduce((current: { [type: string]: StoreAction<T> }, documentChange: DocumentChange<T>) => {
     const actionType: string = documentChange.type;
-    const action: string = actionMap[actionType];
+    const actionName: string = actionMap[actionType];
     const payload: WithId<T>[] = [];
 
     current[actionType] = current[actionType] || {
-      action,
+      actionName,
       payload,
     };
 

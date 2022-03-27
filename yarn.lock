@@ -1522,6 +1522,7 @@ __metadata:
   dependencies:
     "@angular/fire": 7.3.0
     "@firebase/app-types": 0.7.0
+    "@ngrx/store": 13.0.2
     "@types/jest": 27.4.1
     "@typescript-eslint/eslint-plugin": 5.16.0
     "@typescript-eslint/parser": 5.16.0
@@ -1536,10 +1537,26 @@ __metadata:
     typescript: 4.6.3
   peerDependencies:
     "@angular/fire": ^7.0.0
+    "@ngrx/store": ">= 11.0.0"
     firebase: ^9.0.0
     rxjs: ^7.0.0
+  peerDependenciesMeta:
+    "@ngrx/store":
+      optional: true
   languageName: unknown
   linkType: soft
+
+"@ngrx/store@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@ngrx/store@npm:13.0.2"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/core": ^13.0.0
+    rxjs: ^6.5.3 || ^7.4.0
+  checksum: 4d2524c437b4505da368e9cf7fe6a9914150a4a2c09491afd537fba57a8657273d59feef252ce0f074ed9a77c286ca5894061c71b6b10701ef0a1f83c7197f46
+  languageName: node
+  linkType: hard
 
 "@nodelib/fs.scandir@npm:2.1.4":
   version: 2.1.4

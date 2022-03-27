@@ -5,3 +5,4 @@ jest-cache/
 .coverage/
 .DS_Store
 .yarn/cache
+.yarn/install-state*

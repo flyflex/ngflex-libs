@@ -3,11 +3,16 @@ module.exports = {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
       diagnostics: false,
+      isolatedModules: true,
     },
   },
   transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest',
+    '^.+\\.(ts|tsx|html)?$': 'ts-jest',
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!@ngrx|prime-ng|@ngx-translate|@fortawesome|quill)',
+    'node_modules/(?!.*.mjs$)',
+  ],
   testMatch: [
     '**/+(*.)+(spec).+(ts|js)?(x)',
   ],
