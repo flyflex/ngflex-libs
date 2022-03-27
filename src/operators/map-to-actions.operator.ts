@@ -41,16 +41,11 @@ export const mapToActions = <T, A>(
           }))
         : storeAction.payload;
 
-        console.error(actions[storeAction.actionName])
-
-      const actionDispatcher = useNgrxActionCreators
+      return useNgrxActionCreators
       ? (actions[storeAction.actionName] as ActionCreator<string>)({
         [ngrxActionPayloadProp]: payload,
         [ngrxActionParentIdProp]: parentId,
       })
       : new (actions[storeAction.actionName] as AnyClass)(payload, parentId);
-
-      console.error(actionDispatcher);
-      return actionDispatcher;
     })
   );
