@@ -21,7 +21,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "yarn eslint . --ext .ts",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "files": [
     "lib/**/*"
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@angular/fire": "7.3.0",
     "@firebase/app-types": "0.7.0",
+    "@ngrx/store": "^11.0.2",
     "@types/jest": "27.4.1",
     "@typescript-eslint/eslint-plugin": "5.16.0",
     "@typescript-eslint/parser": "5.16.0",

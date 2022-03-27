@@ -1,6 +1,8 @@
+import { ActionCreator } from '@ngrx/store';
 import { switchMap } from 'rxjs/operators';
 
-import { ActionTypes } from '../models/action-types.model';
+import { ActionOptions } from '../models/action-options.model';
+import { ActionTypes, AnyClass } from '../models/action-types.model';
 import { StoreAction } from '../models/store-action.model';
 
 /**
@@ -8,25 +10,47 @@ import { StoreAction } from '../models/store-action.model';
  */
 export const mapToActions = <T, A>(
   actions: ActionTypes,
-  parentId?: string,
-  includeParentIdInPayload?: boolean,
-  parentIdPayloadKey?: string,
-  includeParentIdInNoResults?: boolean,
+  {
+    parentId,
+    includeParentIdInPayload,
+    parentIdPayloadKey,
+    includeParentIdInNoResults,
+    useNgrxActionCreators,
+    ngrxActionParentIdProp,
+    ngrxActionPayloadProp,
+  }: Partial<ActionOptions<T>> = {},
 ) =>
   switchMap((groupedActions: StoreAction<T>[]): A[] =>
-    groupedActions.map((assetAction: StoreAction<T>) => {
-
-      if (assetAction.action === 'loadNoResults' && includeParentIdInNoResults && parentId) {
-        return new actions[assetAction.action](parentId);
+    groupedActions.map((storeAction: StoreAction<T>) => {
+      if (storeAction.actionName === 'loadNoResults') {
+        if (includeParentIdInNoResults && parentId) {
+          return useNgrxActionCreators
+          ? (actions[storeAction.actionName] as ActionCreator<string>)({ [ngrxActionParentIdProp]: parentId })
+          : new (actions[storeAction.actionName] as AnyClass)(parentId);
+        } else {
+          return useNgrxActionCreators
+          ? (actions[storeAction.actionName] as ActionCreator<string>)()
+          : new (actions[storeAction.actionName] as AnyClass)();
+        }
       }
 
-      const payload = Array.isArray(assetAction.payload) && includeParentIdInPayload && parentIdPayloadKey
-        ? assetAction.payload.map(entity => ({
+      const payload = Array.isArray(storeAction.payload) && includeParentIdInPayload && parentIdPayloadKey
+        ? storeAction.payload.map(entity => ({
             ...entity,
             [parentIdPayloadKey]: parentId,
           }))
-        : assetAction.payload;
+        : storeAction.payload;
 
-      return new actions[assetAction.action](payload, parentId);
+        console.error(actions[storeAction.actionName])
+
+      const actionDispatcher = useNgrxActionCreators
+      ? (actions[storeAction.actionName] as ActionCreator<string>)({
+        [ngrxActionPayloadProp]: payload,
+        [ngrxActionParentIdProp]: parentId,
+      })
+      : new (actions[storeAction.actionName] as AnyClass)(payload, parentId);
+
+      console.error(actionDispatcher);
+      return actionDispatcher;
     })
   );

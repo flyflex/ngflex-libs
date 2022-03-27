@@ -2,7 +2,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 import { ActionTypes } from './action-types.model';
 
-export interface GroupByActionOptions<T> {
+export interface ActionOptions<T> {
   angularFireStorage: AngularFireStorage;
   documentKeys: (keyof T)[];
   actionTypes: ActionTypes;
@@ -10,4 +10,7 @@ export interface GroupByActionOptions<T> {
   includeParentIdInPayload: boolean;
   parentIdPayloadKey: string;
   includeParentIdInNoResults: boolean;
+  useNgrxActionCreators: boolean;
+  ngrxActionParentIdProp: string;
+  ngrxActionPayloadProp: string;
 }

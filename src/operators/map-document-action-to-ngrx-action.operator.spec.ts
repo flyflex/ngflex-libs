@@ -41,7 +41,14 @@ describe('map firebase document action to ngrx action operator', () => {
 
         expect(fetchFirebaseStorageDocument).lastCalledWith([], null);
         expect(groupByAction).toHaveBeenCalled();
-        expect(mapToActions).lastCalledWith(actionsMocks, undefined, false, null, false);
+        expect(mapToActions).lastCalledWith(actionsMocks, {
+            includeParentIdInPayload: false,
+            parentIdPayloadKey: null,
+            includeParentIdInNoResults: false,
+            useNgrxActionCreators: false,
+            ngrxActionParentIdProp: 'parentId',
+            ngrxActionPayloadProp: 'payload',
+        });
       });
     });
 
@@ -57,6 +64,9 @@ describe('map firebase document action to ngrx action operator', () => {
             includeParentIdInPayload: true,
             parentIdPayloadKey: 'parentKey',
             includeParentIdInNoResults: true,
+            useNgrxActionCreators: true,
+            ngrxActionParentIdProp: 'parentIdKey',
+            ngrxActionPayloadProp: 'payloadKey',
           }),
         ).subscribe(spy);
 
@@ -64,7 +74,16 @@ describe('map firebase document action to ngrx action operator', () => {
 
         expect(fetchFirebaseStorageDocument).lastCalledWith(['document', 'image'], { fire: 'storageMock' });
         expect(groupByAction).toHaveBeenCalled();
-        expect(mapToActions).lastCalledWith(actionsMocks, 'some parentId', true, 'parentKey', true);
+        expect(mapToActions).lastCalledWith(actionsMocks, {
+            parentId: 'some parentId',
+            includeParentIdInPayload: true,
+            parentIdPayloadKey: 'parentKey',
+            includeParentIdInNoResults: true,
+            useNgrxActionCreators: true,
+            ngrxActionParentIdProp: 'parentIdKey',
+            ngrxActionPayloadProp: 'payloadKey',
+          }
+        );
       });
     });
   });
