@@ -1540,6 +1540,9 @@ __metadata:
     "@ngrx/store": ">= 11.0.0"
     firebase: ^9.0.0
     rxjs: ^7.0.0
+  peerDependenciesMeta:
+    "@ngrx/store":
+      optional: true
   languageName: unknown
   linkType: soft
 
