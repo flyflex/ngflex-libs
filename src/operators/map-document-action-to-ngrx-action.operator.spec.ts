@@ -45,7 +45,7 @@ describe('map firebase document action to ngrx action operator', () => {
             includeParentIdInPayload: false,
             parentIdPayloadKey: null,
             includeParentIdInNoResults: false,
-            useNgrxActionCreators: false,
+            useNgrxClassSyntax: false,
             ngrxActionParentIdProp: 'parentId',
             ngrxActionPayloadProp: 'payload',
         });
@@ -64,7 +64,7 @@ describe('map firebase document action to ngrx action operator', () => {
             includeParentIdInPayload: true,
             parentIdPayloadKey: 'parentKey',
             includeParentIdInNoResults: true,
-            useNgrxActionCreators: true,
+            useNgrxClassSyntax: true,
             ngrxActionParentIdProp: 'parentIdKey',
             ngrxActionPayloadProp: 'payloadKey',
           }),
@@ -79,7 +79,7 @@ describe('map firebase document action to ngrx action operator', () => {
             includeParentIdInPayload: true,
             parentIdPayloadKey: 'parentKey',
             includeParentIdInNoResults: true,
-            useNgrxActionCreators: true,
+            useNgrxClassSyntax: true,
             ngrxActionParentIdProp: 'parentIdKey',
             ngrxActionPayloadProp: 'payloadKey',
           }

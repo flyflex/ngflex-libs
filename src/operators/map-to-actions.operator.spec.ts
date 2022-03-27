@@ -95,6 +95,7 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
+                useNgrxClassSyntax: true,
               }
             ),
           ).subscribe(spy);
@@ -115,6 +116,7 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
+                useNgrxClassSyntax: true,
               }
             ),
           ).subscribe(spy);
@@ -135,6 +137,7 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: false,
+                useNgrxClassSyntax: true,
               }
             ),
           ).subscribe(spy);
@@ -148,7 +151,9 @@ describe('mapToActions', () => {
           const firebaseActions = [{ actionName: 'loadNoResults' }];
 
           of(firebaseActions).pipe(
-            mapToActions(actionsMocksClasses)
+            mapToActions(actionsMocksClasses, {
+              useNgrxClassSyntax: true,
+            })
           ).subscribe(spy);
 
           expect(spy).lastCalledWith(new LoadNoResultsEntitiesClass());
@@ -171,6 +176,7 @@ describe('mapToActions', () => {
                 actionsMocksClasses,
                 {
                   parentId: PARENT_ID,
+                  useNgrxClassSyntax: true,
                 }
               ),
             ).subscribe(spy);
@@ -190,6 +196,9 @@ describe('mapToActions', () => {
             of(GROUPED_ACTIONS).pipe(
               mapToActions(
                 actionsMocksClasses,
+                {
+                  useNgrxClassSyntax: true,
+                },
               ),
             ).subscribe(spy);
 
@@ -222,6 +231,7 @@ describe('mapToActions', () => {
                   parentId: PARENT_ID,
                   includeParentIdInPayload: true,
                   parentIdPayloadKey: parentKey,
+                  useNgrxClassSyntax: true,
                 }
               ),
             ).subscribe(spy);
@@ -244,6 +254,7 @@ describe('mapToActions', () => {
                 {
                   parentId: PARENT_ID,
                   includeParentIdInPayload: true,
+                  useNgrxClassSyntax: true,
                 }
               ),
             ).subscribe(spy);
@@ -269,7 +280,6 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
-                useNgrxActionCreators: true,
                 ngrxActionParentIdProp: 'parentId',
                 ngrxActionPayloadProp: 'payloadProp',
               }
@@ -293,7 +303,6 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
-                useNgrxActionCreators: true,
                 ngrxActionParentIdProp: 'parentId2',
                 ngrxActionPayloadProp: 'payloadProp'
               }
@@ -317,7 +326,6 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
-                useNgrxActionCreators: true,
                 ngrxActionParentIdProp: 'parentId',
                 ngrxActionPayloadProp: 'payloadProp',
               }
@@ -341,7 +349,6 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: false,
-                useNgrxActionCreators: true,
                 ngrxActionParentIdProp: 'parentIdKey',
                 ngrxActionPayloadProp: 'payloadProp',
               }
@@ -369,7 +376,6 @@ describe('mapToActions', () => {
                 actionsMocksCreators,
                 {
                   parentId: PARENT_ID,
-                  useNgrxActionCreators: true,
                   ngrxActionParentIdProp: 'parentIdKey',
                   ngrxActionPayloadProp: 'payloadProp',
                 }
@@ -411,7 +417,6 @@ describe('mapToActions', () => {
               mapToActions(
                 actionsMocksCreators,
                 {
-                  useNgrxActionCreators: true,
                   ngrxActionParentIdProp: 'parentIdKey',
                   ngrxActionPayloadProp: 'payloadProp',
                 }
@@ -456,7 +461,6 @@ describe('mapToActions', () => {
                   parentId: PARENT_ID,
                   includeParentIdInPayload: true,
                   parentIdPayloadKey: parentKey,
-                  useNgrxActionCreators: true,
                   ngrxActionParentIdProp: 'parentIdKey',
                   ngrxActionPayloadProp: 'payloadProp',
                 }
@@ -514,7 +518,6 @@ describe('mapToActions', () => {
                 {
                   parentId: PARENT_ID,
                   includeParentIdInPayload: true,
-                  useNgrxActionCreators: true,
                   ngrxActionParentIdProp: 'parentIdKey',
                   ngrxActionPayloadProp: 'payloadProp',
                 }

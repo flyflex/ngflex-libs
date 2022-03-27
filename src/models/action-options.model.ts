@@ -10,7 +10,7 @@ export interface ActionOptions<T> {
   includeParentIdInPayload: boolean;
   parentIdPayloadKey: string;
   includeParentIdInNoResults: boolean;
-  useNgrxActionCreators: boolean;
+  useNgrxClassSyntax: boolean;
   ngrxActionParentIdProp: string;
   ngrxActionPayloadProp: string;
 }

@@ -15,7 +15,7 @@ export const mapToActions = <T, A>(
     includeParentIdInPayload,
     parentIdPayloadKey,
     includeParentIdInNoResults,
-    useNgrxActionCreators,
+    useNgrxClassSyntax,
     ngrxActionParentIdProp,
     ngrxActionPayloadProp,
   }: Partial<ActionOptions<T>> = {},
@@ -24,13 +24,13 @@ export const mapToActions = <T, A>(
     groupedActions.map((storeAction: StoreAction<T>) => {
       if (storeAction.actionName === 'loadNoResults') {
         if (includeParentIdInNoResults && parentId) {
-          return useNgrxActionCreators
-          ? (actions[storeAction.actionName] as ActionCreator<string>)({ [ngrxActionParentIdProp]: parentId })
-          : new (actions[storeAction.actionName] as AnyClass)(parentId);
+          return useNgrxClassSyntax
+            ? new (actions[storeAction.actionName] as AnyClass)(parentId)
+            : (actions[storeAction.actionName] as ActionCreator<string>)({ [ngrxActionParentIdProp]: parentId });
         } else {
-          return useNgrxActionCreators
-          ? (actions[storeAction.actionName] as ActionCreator<string>)()
-          : new (actions[storeAction.actionName] as AnyClass)();
+          return useNgrxClassSyntax
+            ? new (actions[storeAction.actionName] as AnyClass)()
+            : (actions[storeAction.actionName] as ActionCreator<string>)();
         }
       }
 
@@ -41,11 +41,11 @@ export const mapToActions = <T, A>(
           }))
         : storeAction.payload;
 
-      return useNgrxActionCreators
-      ? (actions[storeAction.actionName] as ActionCreator<string>)({
+      return useNgrxClassSyntax
+      ? new (actions[storeAction.actionName] as AnyClass)(payload, parentId)
+      : (actions[storeAction.actionName] as ActionCreator<string>)({
         [ngrxActionPayloadProp]: payload,
         [ngrxActionParentIdProp]: parentId,
-      })
-      : new (actions[storeAction.actionName] as AnyClass)(payload, parentId);
+      });
     })
   );

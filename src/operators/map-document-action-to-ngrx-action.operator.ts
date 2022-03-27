@@ -20,7 +20,8 @@ export const mapDocumentActionToNgrxAction = <T, A>(actionTypes: ActionTypes, op
 
   // When using NGRX action creators instead of classes, set to true
   // then define a name for parentid prop name using following options
-  const useNgrxActionCreators = options.useNgrxActionCreators || false;
+  // Set to false to use classes syntax instead
+  const useNgrxClassSyntax = options.useNgrxClassSyntax || false;
   const ngrxActionParentIdProp = options.ngrxActionParentIdProp || 'parentId';
   const ngrxActionPayloadProp = options.ngrxActionPayloadProp || 'payload';
 
@@ -37,7 +38,7 @@ export const mapDocumentActionToNgrxAction = <T, A>(actionTypes: ActionTypes, op
         includeParentIdInPayload,
         parentIdPayloadKey,
         includeParentIdInNoResults,
-        useNgrxActionCreators,
+        useNgrxClassSyntax,
         ngrxActionParentIdProp,
         ngrxActionPayloadProp,
       }
