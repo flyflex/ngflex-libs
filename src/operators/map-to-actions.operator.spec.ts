@@ -268,6 +268,19 @@ describe('mapToActions', () => {
 
   describe(`when using action creators from NGRX`, () => {
     describe('when mapping loadNoResults action', () => {
+      describe('with no parent id', () => {
+        it('should return the loadNoResults without parent id', () => {
+          const firebaseActions = [{ actionName: 'loadNoResults' }];
+
+          of(firebaseActions).pipe(
+            mapToActions(actionsMocksCreators)
+          ).subscribe(spy);
+
+          expect(spy).lastCalledWith(createActionMockLoadNoResult);
+          expect(loadNoResultsMock).toHaveBeenCalledWith();
+        });
+      });
+
       describe('when including an existing parent ID through params', () => {
         it('should return the loadNoResults with matching parent id', () => {
           const firebaseActions = [{ actionName: 'loadNoResults' }];
