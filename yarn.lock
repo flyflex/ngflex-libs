@@ -1522,7 +1522,7 @@ __metadata:
   dependencies:
     "@angular/fire": 7.3.0
     "@firebase/app-types": 0.7.0
-    "@ngrx/store": ^11.0.2
+    "@ngrx/store": 13.0.2
     "@types/jest": 27.4.1
     "@typescript-eslint/eslint-plugin": 5.16.0
     "@typescript-eslint/parser": 5.16.0
@@ -1537,20 +1537,21 @@ __metadata:
     typescript: 4.6.3
   peerDependencies:
     "@angular/fire": ^7.0.0
+    "@ngrx/store": ">= 11.0.0"
     firebase: ^9.0.0
     rxjs: ^7.0.0
   languageName: unknown
   linkType: soft
 
-"@ngrx/store@npm:^11.0.2":
-  version: 11.1.1
-  resolution: "@ngrx/store@npm:11.1.1"
+"@ngrx/store@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@ngrx/store@npm:13.0.2"
   dependencies:
     tslib: ^2.0.0
   peerDependencies:
-    "@angular/core": ^11.0.0
-    rxjs: ^6.5.3
-  checksum: 809fd72ecb495a4b4f5a04fdcce26192eeda455d587c345f3659ebc44e2318f91748e7e319b18141e9a0692607b2051c843bc9af3c2082e2a09bb96409efab6b
+    "@angular/core": ^13.0.0
+    rxjs: ^6.5.3 || ^7.4.0
+  checksum: 4d2524c437b4505da368e9cf7fe6a9914150a4a2c09491afd537fba57a8657273d59feef252ce0f074ed9a77c286ca5894061c71b6b10701ef0a1f83c7197f46
   languageName: node
   linkType: hard
 
