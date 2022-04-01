@@ -14,35 +14,11 @@ const entityUpdateMock = jest.fn().mockReturnValue(createActionMockUpdate);
 const entityRemoveMock = jest.fn().mockReturnValue(createActionMockRemove);
 const loadNoResultsMock = jest.fn().mockReturnValue(createActionMockLoadNoResult);
 
-class AddEntitiesClass {
-  public type = 'addEntities';
-  constructor(public payload: any, public parentId?: string) { }
-}
-class UpdateEntitiesClass {
-  public type = 'updateEntities';
-  constructor(public payload: any, public parentId?: string) { }
-}
-class RemoveEntitiesClass {
-  public type = 'removeEntities';
-  constructor(public payload: any, public parentId?: string) { }
-}
-class LoadNoResultsEntitiesClass {
-  public type = 'loadNoResultsEntities';
-  constructor(public parentId?: string) { }
-}
-
-const actionsMocksClasses: ActionTypes = {
-  loadNoResults: LoadNoResultsEntitiesClass,
-  addMany: AddEntitiesClass,
-  upsertMany: UpdateEntitiesClass,
-  removeMany: RemoveEntitiesClass,
-};
-
 const actionsMocksCreators: ActionTypes = {
-  loadNoResults: loadNoResultsMock,
-  addMany: entityAddMock,
-  upsertMany: entityUpdateMock,
-  removeMany: entityRemoveMock,
+  loadNoResults: loadNoResultsMock as any,
+  addMany: entityAddMock as any,
+  upsertMany: entityUpdateMock as any,
+  removeMany: entityRemoveMock as any,
 };
 
 const action1 = { type: 'added', payload: { id: 'id1', data: 'value1' } };
@@ -81,191 +57,6 @@ describe('mapToActions', () => {
     loadNoResultsMock.mockClear();
   });
 
-  describe(`using classes NGRX syntax`, () => {
-    describe('when mapping loadNoResults action', () => {
-      describe('when including an existing parent ID through params', () => {
-        it('should return the loadNoResults with matching parent id', () => {
-          const firebaseActions = [{ actionName: 'loadNoResults' }];
-
-          of(firebaseActions).pipe(
-            mapToActions(
-              actionsMocksClasses,
-              {
-                parentId: PARENT_ID,
-                includeParentIdInPayload: false,
-                parentIdPayloadKey: null,
-                includeParentIdInNoResults: true,
-                useNgrxClassSyntax: true,
-              }
-            ),
-          ).subscribe(spy);
-
-          expect(spy).lastCalledWith(new LoadNoResultsEntitiesClass(PARENT_ID));
-        });
-      });
-
-      describe('when there is no parent id', () => {
-        it('should return the loadNoResults without any parent id', () => {
-          const firebaseActions = [{ actionName: 'loadNoResults' }];
-
-          of(firebaseActions).pipe(
-            mapToActions(
-              actionsMocksClasses,
-              {
-                parentId: null,
-                includeParentIdInPayload: false,
-                parentIdPayloadKey: null,
-                includeParentIdInNoResults: true,
-                useNgrxClassSyntax: true,
-              }
-            ),
-          ).subscribe(spy);
-
-          expect(spy).lastCalledWith(new LoadNoResultsEntitiesClass());
-        });
-      });
-
-      describe('when the option to include parent ID is set to false', () => {
-        it('should return the loadNoResults with matching parent id', () => {
-          const firebaseActions = [{ actionName: 'loadNoResults' }];
-
-          of(firebaseActions).pipe(
-            mapToActions(
-              actionsMocksClasses,
-              {
-                parentId: PARENT_ID,
-                includeParentIdInPayload: false,
-                parentIdPayloadKey: null,
-                includeParentIdInNoResults: false,
-                useNgrxClassSyntax: true,
-              }
-            ),
-          ).subscribe(spy);
-
-          expect(spy).lastCalledWith(new LoadNoResultsEntitiesClass());
-        });
-      });
-
-      describe('with no parent id', () => {
-        it('should return the loadNoResults without parent id', () => {
-          const firebaseActions = [{ actionName: 'loadNoResults' }];
-
-          of(firebaseActions).pipe(
-            mapToActions(actionsMocksClasses, {
-              useNgrxClassSyntax: true,
-            })
-          ).subscribe(spy);
-
-          expect(spy).lastCalledWith(new LoadNoResultsEntitiesClass());
-        });
-      });
-    });
-
-    describe('when mapping standard actions', () => {
-      describe('by default', () => {
-        describe('with parent Id', () => {
-          it('should return actions with proper payload and parent id', () => {
-            const callsArgs = JestUtils.getCallsSingleArgs(
-              new AddEntitiesClass([action1.payload, action2.payload], PARENT_ID),
-              new RemoveEntitiesClass([action3.payload], PARENT_ID),
-              new UpdateEntitiesClass([action4.payload], PARENT_ID),
-            );
-
-            of(GROUPED_ACTIONS).pipe(
-              mapToActions(
-                actionsMocksClasses,
-                {
-                  parentId: PARENT_ID,
-                  useNgrxClassSyntax: true,
-                }
-              ),
-            ).subscribe(spy);
-
-            expect(spy.mock.calls).toEqual(callsArgs);
-          });
-        });
-
-        describe('with no parent id', () => {
-          it('should return actions with proper payload and empty parent id', () => {
-            const callsArgs = JestUtils.getCallsSingleArgs(
-              new AddEntitiesClass([action1.payload, action2.payload]),
-              new RemoveEntitiesClass([action3.payload]),
-              new UpdateEntitiesClass([action4.payload]),
-            );
-
-            of(GROUPED_ACTIONS).pipe(
-              mapToActions(
-                actionsMocksClasses,
-                {
-                  useNgrxClassSyntax: true,
-                },
-              ),
-            ).subscribe(spy);
-
-            expect(spy.mock.calls).toEqual(callsArgs);
-          });
-        });
-      });
-
-      describe('with option to include parent id in payload', () => {
-        describe('when a parent id payload key is set in option', () => {
-          it('should return actions with payload and parent id as given key value', () => {
-            const parentKey = 'parentKey';
-            const callsArgs = JestUtils.getCallsSingleArgs(
-              new AddEntitiesClass([
-                {...action1.payload, [parentKey]: PARENT_ID },
-                {...action2.payload, [parentKey]: PARENT_ID },
-               ], PARENT_ID),
-              new RemoveEntitiesClass([
-                {...action3.payload, [parentKey]: PARENT_ID }
-              ], PARENT_ID),
-              new UpdateEntitiesClass([
-                {...action4.payload, [parentKey]: PARENT_ID }
-              ], PARENT_ID),
-            );
-
-            of(GROUPED_ACTIONS).pipe(
-              mapToActions(
-                actionsMocksClasses,
-                {
-                  parentId: PARENT_ID,
-                  includeParentIdInPayload: true,
-                  parentIdPayloadKey: parentKey,
-                  useNgrxClassSyntax: true,
-                }
-              ),
-            ).subscribe(spy);
-
-            expect(spy.mock.calls).toEqual(callsArgs);
-          });
-        });
-
-        describe('when no parent id payload key is not given in options', () => {
-          it('should return actions with payload but no parent id', () => {
-            const callsArgs = JestUtils.getCallsSingleArgs(
-              new AddEntitiesClass([action1.payload, action2.payload], PARENT_ID),
-              new RemoveEntitiesClass([action3.payload], PARENT_ID),
-              new UpdateEntitiesClass([action4.payload], PARENT_ID),
-            );
-
-            of(GROUPED_ACTIONS).pipe(
-              mapToActions(
-                actionsMocksClasses,
-                {
-                  parentId: PARENT_ID,
-                  includeParentIdInPayload: true,
-                  useNgrxClassSyntax: true,
-                }
-              ),
-            ).subscribe(spy);
-
-            expect(spy.mock.calls).toEqual(callsArgs);
-          });
-        });
-      });
-    });
-  });
-
   describe(`when using action creators from NGRX`, () => {
     describe('when mapping loadNoResults action', () => {
       describe('with no parent id', () => {
@@ -293,8 +84,8 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
-                ngrxActionParentIdProp: 'parentId',
-                ngrxActionPayloadProp: 'payloadProp',
+                parentIdProp: 'parentId',
+                payloadProp: 'payloadProp',
               }
             ),
           ).subscribe(spy);
@@ -316,8 +107,8 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
-                ngrxActionParentIdProp: 'parentId2',
-                ngrxActionPayloadProp: 'payloadProp'
+                parentIdProp: 'parentId2',
+                payloadProp: 'payloadProp'
               }
             ),
           ).subscribe(spy);
@@ -339,8 +130,8 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: true,
-                ngrxActionParentIdProp: 'parentId',
-                ngrxActionPayloadProp: 'payloadProp',
+                parentIdProp: 'parentId',
+                payloadProp: 'payloadProp',
               }
             ),
           ).subscribe(spy);
@@ -362,8 +153,8 @@ describe('mapToActions', () => {
                 includeParentIdInPayload: false,
                 parentIdPayloadKey: null,
                 includeParentIdInNoResults: false,
-                ngrxActionParentIdProp: 'parentIdKey',
-                ngrxActionPayloadProp: 'payloadProp',
+                parentIdProp: 'parentIdKey',
+                payloadProp: 'payloadProp',
               }
             ),
           ).subscribe(spy);
@@ -389,8 +180,8 @@ describe('mapToActions', () => {
                 actionsMocksCreators,
                 {
                   parentId: PARENT_ID,
-                  ngrxActionParentIdProp: 'parentIdKey',
-                  ngrxActionPayloadProp: 'payloadProp',
+                  parentIdProp: 'parentIdKey',
+                  payloadProp: 'payloadProp',
                 }
               ),
             ).subscribe(spy);
@@ -430,8 +221,8 @@ describe('mapToActions', () => {
               mapToActions(
                 actionsMocksCreators,
                 {
-                  ngrxActionParentIdProp: 'parentIdKey',
-                  ngrxActionPayloadProp: 'payloadProp',
+                  parentIdProp: 'parentIdKey',
+                  payloadProp: 'payloadProp',
                 }
               ),
             ).subscribe(spy);
@@ -474,8 +265,8 @@ describe('mapToActions', () => {
                   parentId: PARENT_ID,
                   includeParentIdInPayload: true,
                   parentIdPayloadKey: parentKey,
-                  ngrxActionParentIdProp: 'parentIdKey',
-                  ngrxActionPayloadProp: 'payloadProp',
+                  parentIdProp: 'parentIdKey',
+                  payloadProp: 'payloadProp',
                 }
               ),
             ).subscribe(spy);
@@ -531,8 +322,8 @@ describe('mapToActions', () => {
                 {
                   parentId: PARENT_ID,
                   includeParentIdInPayload: true,
-                  ngrxActionParentIdProp: 'parentIdKey',
-                  ngrxActionPayloadProp: 'payloadProp',
+                  parentIdProp: 'parentIdKey',
+                  payloadProp: 'payloadProp',
                 }
               ),
             ).subscribe(spy);

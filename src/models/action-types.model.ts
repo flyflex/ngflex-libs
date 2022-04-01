@@ -1,12 +1,21 @@
 import { ActionCreator } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 
-export type AnyClass = new (...args: any[]) => any;
+export type ActionCreatorWithParentIdPropAndPayloadProp = ActionCreator<string, (props: {
+  [propKey: string]: any;
+}) => (TypedAction<string> & any)>;
+
+export type ActionCreatorWithParentIdProp = ActionCreator<string, (props: {
+  [parentIdProp: string]: string;
+}) => (TypedAction<string> & any)>;
+
+export type ActionCreatorWithNoProp = ActionCreator<string>;
 
 export type ActionTypes = {
-  load?: ActionCreator<string> | AnyClass,
-  loadNoResults?: ActionCreator<string> | AnyClass,
-  loadFail?: ActionCreator<string> | AnyClass,
-  addMany?: ActionCreator<string> | AnyClass,
-  upsertMany?: ActionCreator<string> | AnyClass,
-  removeMany?: ActionCreator<string> | AnyClass,
+  load?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
+  loadNoResults?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
+  loadFail?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
+  addMany?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
+  upsertMany?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
+  removeMany?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
 };
