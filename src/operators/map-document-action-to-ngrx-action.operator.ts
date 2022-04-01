@@ -10,20 +10,15 @@ import { mapToActions } from './map-to-actions.operator';
 /**
  * Map Firebase document action to NGRX ones while fetching required documents
  */
-export const mapDocumentActionToNgrxAction = <T, A>(actionTypes: ActionTypes, options: Partial<ActionOptions<T>> = {}) => {
+export const mapDocumentActionToNgrxAction = <T>(actionTypes: ActionTypes, options: Partial<ActionOptions<T>> = {}) => {
   const documentKeys = options.documentKeys || [];
   const angularFireStorage = options.angularFireStorage || null;
   const parentId = options.parentId || undefined;
   const includeParentIdInPayload = options.includeParentIdInPayload || false;
   const parentIdPayloadKey = options.parentIdPayloadKey || null;
   const includeParentIdInNoResults = options.includeParentIdInNoResults || false;
-
-  // When using NGRX action creators instead of classes, set to true
-  // then define a name for parentid prop name using following options
-  // Set to false to use classes syntax instead
-  const useNgrxClassSyntax = options.useNgrxClassSyntax || false;
-  const ngrxActionParentIdProp = options.ngrxActionParentIdProp || 'parentId';
-  const ngrxActionPayloadProp = options.ngrxActionPayloadProp || 'payload';
+  const parentIdProp = options.parentIdProp || 'parentId';
+  const payloadProp = options.payloadProp || 'payload';
 
   return pipe(
     fetchFirebaseStorageDocument<T>(
@@ -31,17 +26,14 @@ export const mapDocumentActionToNgrxAction = <T, A>(actionTypes: ActionTypes, op
       angularFireStorage,
     ),
     groupByAction<T>(),
-    mapToActions<T, A[]>(
-      actionTypes,
+    mapToActions(actionTypes,
       {
         parentId,
         includeParentIdInPayload,
         parentIdPayloadKey,
         includeParentIdInNoResults,
-        useNgrxClassSyntax,
-        ngrxActionParentIdProp,
-        ngrxActionPayloadProp,
-      }
-    ),
-  );
+        parentIdProp,
+        payloadProp,
+      }),
+  )
 };
