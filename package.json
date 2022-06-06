@@ -5,7 +5,7 @@
   "description": "NGFlex NGRX firebase operators and utils",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "packageManager": "yarn@3.2.0",
+  "packageManager": "yarn@3.2.1",
   "author": "FlyFlex",
   "homepage": "https://github.com/flyflex/ngflex-ngrx-firebase",
   "repository": {
