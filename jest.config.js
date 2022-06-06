@@ -34,6 +34,5 @@ module.exports = {
     '<rootDir>/.coverage/',
     '<rootDir>/scripts/',
   ],
-  testURL: 'http://localhost',
   cacheDirectory: './jest-cache'
 };

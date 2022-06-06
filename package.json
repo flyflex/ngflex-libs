@@ -1,11 +1,11 @@
 {
   "name": "@ngflex/ngrx-firebase",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "license": "MIT",
   "description": "NGFlex NGRX firebase operators and utils",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "packageManager": "yarn@3.2.0",
+  "packageManager": "yarn@3.2.1",
   "author": "FlyFlex",
   "homepage": "https://github.com/flyflex/ngflex-ngrx-firebase",
   "repository": {
@@ -39,20 +39,20 @@
     }
   },
   "devDependencies": {
-    "@angular/fire": "7.3.0",
+    "@angular/fire": "7.4.0",
     "@firebase/app-types": "0.7.0",
-    "@ngrx/store": "13.0.2",
-    "@types/jest": "27.4.1",
-    "@typescript-eslint/eslint-plugin": "5.16.0",
-    "@typescript-eslint/parser": "5.16.0",
-    "eslint": "8.12.0",
-    "firebase": "9.6.10",
-    "jest": "27.5.1",
-    "jest-haste-map": "27.5.1",
-    "jest-preset-angular": "11.1.1",
-    "jest-resolve": "27.5.1",
+    "@ngrx/store": "13.2.0",
+    "@types/jest": "28.1.1",
+    "@typescript-eslint/eslint-plugin": "5.27.0",
+    "@typescript-eslint/parser": "5.27.0",
+    "eslint": "8.17.0",
+    "firebase": "9.8.2",
+    "jest": "28.1.0",
+    "jest-haste-map": "28.1.0",
+    "jest-preset-angular": "12.1.0",
+    "jest-resolve": "28.1.0",
     "rxjs": "7.5.5",
-    "ts-jest": "27.1.4",
+    "ts-jest": "28.0.4",
     "typescript": "4.6.3"
   }
 }
