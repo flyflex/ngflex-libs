@@ -28,31 +28,27 @@
     "lib/**/*"
   ],
   "peerDependencies": {
+    "@angular/core": ">= 11.0.0",
     "@angular/fire": "^7.0.0",
     "@ngrx/store": ">= 11.0.0",
     "firebase": "^9.0.0",
     "rxjs": "^7.0.0"
   },
-  "peerDependenciesMeta": {
-    "@ngrx/store": {
-      "optional": true
-    }
-  },
   "devDependencies": {
-    "@angular/fire": "7.4.0",
+    "@angular/fire": "7.4.1",
     "@firebase/app-types": "0.7.0",
     "@ngrx/store": "13.2.0",
     "@types/jest": "28.1.1",
-    "@typescript-eslint/eslint-plugin": "5.27.0",
-    "@typescript-eslint/parser": "5.27.0",
+    "@typescript-eslint/eslint-plugin": "5.28.0",
+    "@typescript-eslint/parser": "5.28.0",
     "eslint": "8.17.0",
-    "firebase": "9.8.2",
-    "jest": "28.1.0",
-    "jest-haste-map": "28.1.0",
+    "firebase": "9.8.3",
+    "jest": "28.1.1",
+    "jest-haste-map": "28.1.1",
     "jest-preset-angular": "12.1.0",
-    "jest-resolve": "28.1.0",
+    "jest-resolve": "28.1.1",
     "rxjs": "7.5.5",
-    "ts-jest": "28.0.4",
-    "typescript": "4.6.3"
+    "ts-jest": "28.0.5",
+    "typescript": "4.7.3"
   }
 }
