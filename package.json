@@ -38,10 +38,10 @@
     "@angular/fire": "7.4.1",
     "@firebase/app-types": "0.7.0",
     "@ngrx/store": "13.2.0",
-    "@types/jest": "28.1.1",
+    "@types/jest": "28.1.2",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "@typescript-eslint/parser": "5.28.0",
-    "eslint": "8.17.0",
+    "eslint": "8.18.0",
     "firebase": "9.8.3",
     "jest": "28.1.1",
     "jest-haste-map": "28.1.1",
@@ -49,6 +49,6 @@
     "jest-resolve": "28.1.1",
     "rxjs": "7.5.5",
     "ts-jest": "28.0.5",
-    "typescript": "4.7.3"
+    "typescript": "4.7.4"
   }
 }
