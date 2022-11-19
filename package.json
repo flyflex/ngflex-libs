@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "build:ngrx-firebase": "nx run ngrx-firebase:build",
+    "build": "nx run-many --target=build --all",
     "lint": "nx run-many --target=lint --all",
     "test": "nx run-many --target=test --all --coverage",
     "test:watch": "jest --watch",
