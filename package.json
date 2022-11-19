@@ -10,6 +10,7 @@
     "build": "nx run-many --target=build --all",
     "lint": "nx run-many --target=lint --all",
     "test": "nx run-many --target=test --all --coverage",
+    "test:merge-reports": "node tools/scripts/merge-coverage-reports.js",
     "test:watch": "jest --watch",
     "publish:ngrx-firebase": "nx run ngrx-firebase:publish"
   },

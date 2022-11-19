@@ -10,6 +10,7 @@ export default {
   transform: {
     '^.+\\.[tj]s$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/ngrx-firebase',
+  coverageReporters: ['json'],
+  moduleFileExtensions: ['ts', 'js', 'html'],
 };

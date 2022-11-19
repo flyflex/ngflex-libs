@@ -59,12 +59,12 @@ jobs:
       - name: test:unit
         shell: bash
         run: |
-          yarn test
+          yarn test && yarn test:merge-reports
       - name: test:coverage
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ${{ github.workspace }}/.coverage/lcov.info
+          path-to-lcov: ${{ github.workspace }}/coverage/report/lcov.info
 
   build:
     name: build
