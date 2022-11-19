@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "es6",
+    "noImplicitAny": false,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./lib",
+    "target": "es2015",
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

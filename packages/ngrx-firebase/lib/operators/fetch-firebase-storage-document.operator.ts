@@ -26,7 +26,7 @@ export const fetchFirebaseStorageDocument = <T>(documentKeys: (keyof T)[], fires
 
         return combineLatest([
           ...documentKeys.map((docKey: keyof T) => {
-            const path: string = data[docKey] as unknown as string || null;
+            const path: string | null = data[docKey] as unknown as string || null;
 
             const defaultData = { [docKey]: path };
 
@@ -54,5 +54,5 @@ export const fetchFirebaseStorageDocument = <T>(documentKeys: (keyof T)[], fires
       }),
       map(val => val),
     ),
-  ),
-));
+    ),
+  ));
