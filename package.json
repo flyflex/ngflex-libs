@@ -1,25 +1,10 @@
 {
-  "name": "@ngflex/ngrx-firebase",
-  "version": "3.1.0",
+  "name": "ngflex-libraries",
+  "version": "0.0.1",
   "license": "MIT",
-  "description": "NGFlex NGRX firebase operators and utils",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "description": "NGFlex ngrx, firebase and js libraries",
   "packageManager": "yarn@3.2.1",
   "author": "FlyFlex",
-  "homepage": "https://github.com/flyflex/ngflex-ngrx-firebase",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/flyflex/ngflex-ngrx-firebase"
-  },
-  "keywords": [
-    "angular",
-    "ngrx",
-    "firebase",
-    "firestore",
-    "rxjs",
-    "operators"
-  ],
   "scripts": {
     "build:ngrx-firebase": "nx run ngrx-firebase:build",
     "build": "nx run-many --target=build --all",
@@ -27,16 +12,6 @@
     "test": "nx run-many --target=test --all --coverage",
     "test:watch": "jest --watch",
     "publish:ngrx-firebase": "nx run ngrx-firebase:publish"
-  },
-  "files": [
-    "lib/**/*"
-  ],
-  "peerDependencies": {
-    "@angular/core": ">= 11.0.0",
-    "@angular/fire": "^7.0.0",
-    "@ngrx/store": ">= 11.0.0",
-    "firebase": "^9.0.0",
-    "rxjs": "^7.0.0"
   },
   "dependencies": {
     "tslib": "2.4.1"

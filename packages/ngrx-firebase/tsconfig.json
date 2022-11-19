@@ -14,11 +14,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "exclude": [
-    "**/tests/*"
-  ],
   "files": [],
-  "include": [],
   "references": [
     {
       "path": "./tsconfig.lib.json"
