@@ -1,7 +1,9 @@
 import { readJSONSync } from 'fs-extra';
 import { glob } from 'glob';
+import { create } from 'istanbul-reports';
+import { createContext } from 'istanbul-lib-report';
 
-import { mergeAllReports, findAllCoverageReports, normalizeJestCoverage } from './merge-coverage-reports';
+import { mergeAllReports, findAllCoverageReports, normalizeJestCoverage, generateReport } from './merge-coverage-reports';
 
 jest.mock('fs-extra', () => ({
   readJSONSync: jest.fn(),
@@ -9,6 +11,14 @@ jest.mock('fs-extra', () => ({
 
 jest.mock('glob', () => ({
   glob: jest.fn(),
+}));
+
+jest.mock('istanbul-lib-report', () => ({
+  createContext: jest.fn(),
+}));
+
+jest.mock('istanbul-reports', () => ({
+  create: jest.fn(),
 }));
 
 const COVERAGE_REPORT = {
@@ -97,5 +107,43 @@ describe(`findAllCoverageReports`, () => {
 
     expect((glob as unknown as jest.Mock)).toHaveBeenCalledWith('somePath', {}, expect.any(Function));
     expect(callback).toHaveBeenCalledWith({ some: 'error' }, ['report 1', 'report 2']);
+  });
+});
+
+describe(`generateReport`, () => {
+  const execute = jest.fn();
+  const COVERAGE_MAP = {
+    some: 'coverageMap'
+  } as any;
+  const REPORT_TYPE = 'json';
+  const OUTPUT_DIR = 'someOutputDir';
+
+  beforeEach(() => {
+    (createContext as jest.Mock).mockClear().mockReturnValue('reportContextCreated');
+    (create as jest.Mock).mockClear().mockReturnValue({
+      execute,
+    });
+  });
+
+  it(`should call callback function as a result of glob call on requested files`, () => {
+    generateReport(COVERAGE_MAP, REPORT_TYPE, OUTPUT_DIR);
+
+    expect((createContext as jest.Mock)).toHaveBeenCalledWith({
+      dir: OUTPUT_DIR,
+      defaultSummarizer: 'nested',
+      watermarks: {
+        statements: [50, 80],
+        functions: [50, 80],
+        branches: [0, 80],
+        lines: [50, 80],
+      },
+      coverageMap: COVERAGE_MAP,
+    });
+    expect((create as jest.Mock)).toHaveBeenCalledWith(REPORT_TYPE, {
+      skipEmpty: false,
+      skipFull: false, // skip text lines with 100%
+      verbose: true, // verbose html report
+    });
+    expect(execute).toHaveBeenCalledWith('reportContextCreated');
   });
 });
