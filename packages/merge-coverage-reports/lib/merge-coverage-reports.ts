@@ -25,7 +25,7 @@ export const normalizeJestCoverage = (obj: Record<string, any>) => {
 };
 
 export const mergeAllReports = (coverageMap: CoverageMap, reports: string[]) => {
-  if (Array.isArray(reports) === false) {
+  if (!Array.isArray(reports)) {
     return;
   }
 
