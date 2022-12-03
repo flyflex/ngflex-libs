@@ -1,0 +1,11 @@
+{
+  "name": "@ngflex/merge-coverage-reports",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "dependencies": {
+    "fs-extra": "11.1.0",
+    "glob": "8.0.3",
+    "istanbul-reports": "3.1.5",
+    "minimist": "1.2.7"
+  }
+}

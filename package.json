@@ -16,6 +16,7 @@
     "verif:all": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
+    "minimist": "^1.2.7",
     "tslib": "2.4.1"
   },
   "devDependencies": {
@@ -28,12 +29,18 @@
     "@nrwl/js": "15.2.1",
     "@nrwl/linter": "15.2.1",
     "@nrwl/workspace": "15.2.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/glob": "^8.0.0",
     "@types/jest": "29.2.3",
+    "@types/minimist": "^1.2.2",
     "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "5.44.0",
     "@typescript-eslint/parser": "5.44.0",
     "eslint": "8.28.0",
     "firebase": "9.14.0",
+    "fs-extra": "11.1.0",
+    "glob": "8.0.3",
+    "istanbul-reports": "3.1.5",
     "jest": "29.3.1",
     "jest-environment-jsdom": "29.3.1",
     "jest-haste-map": "29.3.1",

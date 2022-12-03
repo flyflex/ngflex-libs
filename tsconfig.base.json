@@ -18,6 +18,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ngflex/merge-coverage-reports": [
+        "packages/merge-coverage-reports/src/index.ts"
+      ],
       "@ngflex/ngrx-firebase": [
         "packages/ngrx-firebase/src/index.ts"
       ]
