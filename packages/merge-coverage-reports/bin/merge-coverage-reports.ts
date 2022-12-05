@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { readJSONSync } from 'fs-extra';
 import { glob } from 'glob';
 import { create as instanBulReportCreate, ReportOptions } from 'istanbul-reports';

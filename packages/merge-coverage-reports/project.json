@@ -11,7 +11,8 @@
       ],
       "options": {
         "outputPath": "dist/packages/merge-coverage-reports",
-        "main": "packages/merge-coverage-reports/index.ts",
+        "main": "packages/merge-coverage-reports/bin/merge-coverage-reports.ts",
+        "bin": "packages/merge-coverage-reports/bin/merge-coverage-reports.ts",
         "tsConfig": "packages/merge-coverage-reports/tsconfig.lib.json",
         "assets": [
           "packages/merge-coverage-reports/*.md"
