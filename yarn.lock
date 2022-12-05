@@ -6600,9 +6600,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngflex-libraries@workspace:.":
+"ngflex-libs@workspace:.":
   version: 0.0.0-use.local
-  resolution: "ngflex-libraries@workspace:."
+  resolution: "ngflex-libs@workspace:."
   dependencies:
     "@angular/fire": 7.5.0
     "@firebase/app-types": 0.8.1

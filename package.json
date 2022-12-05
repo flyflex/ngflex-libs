@@ -1,9 +1,13 @@
 {
-  "name": "ngflex-libraries",
+  "name": "ngflex-libs",
   "version": "0.0.1",
   "license": "MIT",
   "description": "NGFlex ngrx, firebase and js libraries",
   "packageManager": "yarn@3.2.1",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/flyflex/ngflex-libs"
+  },
   "author": "FlyFlex",
   "scripts": {
     "build:ngrx-firebase": "nx run ngrx-firebase:build",
