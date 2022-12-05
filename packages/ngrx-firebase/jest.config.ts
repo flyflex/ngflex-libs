@@ -11,6 +11,6 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   coverageDirectory: '../../coverage/packages/ngrx-firebase',
-  coverageReporters: ['json'],
+  coverageReporters: ['json', 'lcov', 'html'],
   moduleFileExtensions: ['ts', 'js', 'html'],
 };

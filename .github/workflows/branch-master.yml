@@ -59,7 +59,7 @@ jobs:
       - name: test:unit
         shell: bash
         run: |
-          yarn test && yarn test:merge-reports
+          yarn test
       - name: test:coverage
         uses: coverallsapp/github-action@master
         with:

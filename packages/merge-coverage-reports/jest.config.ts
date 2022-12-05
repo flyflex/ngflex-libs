@@ -10,6 +10,7 @@ export default {
   transform: {
     '^.+\\.[tj]s$': 'ts-jest'
   },
+  coverageDirectory: '../../coverage/packages/merge-coverage-reports',
+  coverageReporters: ['json', 'lcov', 'html'],
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/merge-coverage-reports'
 };
