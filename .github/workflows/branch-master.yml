@@ -34,37 +34,6 @@ jobs:
         shell: bash
         run: |
           yarn lint
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: setup:checkout
-        uses: actions/checkout@v2
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: setup:cache:node
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: deps:install
-        shell: bash
-        run: |
-          yarn
-      - name: test:unit
-        shell: bash
-        run: |
-          yarn test
-      - name: test:coverage
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ${{ github.workspace }}/coverage/report/lcov.info
 
   build:
     name: build
@@ -98,3 +67,36 @@ jobs:
         with:
           name: ngrx-firebase-${{ github.sha }}
           path: ${{ github.workspace }}/lib
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    needs: test
+    timeout-minutes: 5
+    steps:
+      - name: setup:checkout
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: setup:cache:node
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: deps:install
+        shell: bash
+        run: |
+          yarn
+      - name: test:unit
+        shell: bash
+        run: |
+          yarn test
+      - name: test:coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{ github.workspace }}/coverage/report/lcov.info
