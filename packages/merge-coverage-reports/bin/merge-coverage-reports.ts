@@ -86,6 +86,7 @@ export const mergeCoverageReports = async (args: ParsedArgs) => {
   });
 }
 
+/* istanbul ignore next */
 mergeCoverageReports(
   minimist(process.argv.slice(2))
 ).catch((err) => {
