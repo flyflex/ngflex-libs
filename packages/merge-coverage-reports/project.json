@@ -28,6 +28,15 @@
         "build"
       ]
     },
+    "merge": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/packages/merge-coverage-reports/bin/merge-coverage-reports.js"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": [
