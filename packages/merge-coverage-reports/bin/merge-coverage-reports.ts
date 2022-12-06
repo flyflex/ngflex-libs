@@ -31,8 +31,6 @@ export const mergeAllReports = (coverageMap: CoverageMap, reports: string[]) => 
     return;
   }
 
-  console.error(coverageMap, reports)
-
   reports.forEach((reportFile: string) => {
     const coverageReport = readJSONSync(reportFile);
     coverageMap.merge(normalizeJestCoverage(coverageReport));
@@ -42,7 +40,6 @@ export const mergeAllReports = (coverageMap: CoverageMap, reports: string[]) => 
 export const findAllCoverageReports = (path: string, callback: (reports: string[], error: Error | null) => void) => {
 
   glob(path, {}, (err, reports) => {
-    console.error(reports)
     callback(reports, err);
   });
 };
@@ -71,7 +68,6 @@ export const mergeCoverageReports = async (args: ParsedArgs) => {
 
   const reportOutPath = `${rootDir}/${reportOut}`;
   const reportsFilesGlob = rootDir + '/' + reportsFiles;
-  console.error(generateReport, findAllCoverageReports, mergeAllReports)
 
   const coverageMap = createCoverageMap({});
 
