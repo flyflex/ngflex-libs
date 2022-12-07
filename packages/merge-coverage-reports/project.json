@@ -22,7 +22,16 @@
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs merge-coverage-reports {args.ver} {args.tag}"
+        "command": "node tools/scripts/publish.mjs merge-coverage-reports readFromPackageJson {args.tag}"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "merge": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/packages/merge-coverage-reports/bin/merge-coverage-reports.js"
       },
       "dependsOn": [
         "build"
