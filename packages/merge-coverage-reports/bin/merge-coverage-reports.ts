@@ -37,11 +37,8 @@ export const mergeAllReports = (coverageMap: CoverageMap, reports: string[]) => 
   });
 };
 
-export const findAllCoverageReports = (path: string, callback: (reports: string[], error: Error | null) => void) => {
-
-  glob(path, {}, (err, reports) => {
-    callback(reports, err);
-  });
+export const findAllCoverageReports = (path: string): Promise<string[]> => {
+  return glob(path, {});
 };
 
 export const generateReport = (coverageMap: CoverageMap, type: keyof ReportOptions, outputDir: string) => {
@@ -71,15 +68,17 @@ export const mergeCoverageReports = async (args: ParsedArgs) => {
 
   const coverageMap = createCoverageMap({});
 
-  findAllCoverageReports(reportsFilesGlob, (reports) => {
-    if (Array.isArray(reports)) {
-      mergeAllReports(coverageMap, reports);
-      generateReport(coverageMap, 'text', reportOutPath);
-      generateReport(coverageMap, 'text-summary', reportOutPath);
-      generateReport(coverageMap, 'html', reportOutPath);
-      generateReport(coverageMap, 'lcov', reportOutPath);
-    }
-  });
+  const reports = await findAllCoverageReports(reportsFilesGlob);
+
+  console.error(reports);
+
+  if (Array.isArray(reports)) {
+    mergeAllReports(coverageMap, reports);
+    generateReport(coverageMap, 'text', reportOutPath);
+    generateReport(coverageMap, 'text-summary', reportOutPath);
+    generateReport(coverageMap, 'html', reportOutPath);
+    generateReport(coverageMap, 'lcov', reportOutPath);
+  }
 }
 
 /* istanbul ignore next */
