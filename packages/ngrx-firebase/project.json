@@ -21,7 +21,7 @@
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs ngrx-firebase readFromPackageJson {args.tag}"
+        "command": "node tools/scripts/publish.mjs ngrx-firebase readFromPackageJson {args.tag} {args.otp}"
       },
       "dependsOn": [
         "build"
