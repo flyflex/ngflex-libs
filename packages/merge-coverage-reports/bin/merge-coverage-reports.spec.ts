@@ -99,19 +99,15 @@ describe(`mergeAllReports`, () => {
 });
 
 describe(`findAllCoverageReports`, () => {
-  const callback = jest.fn();
-
   beforeEach(() => {
-    (glob as unknown as jest.Mock).mockClear().mockImplementation((path, options, cb) => {
-      cb(['report 1', 'report 2'], { some: 'error' });
-    });
+    (glob as unknown as jest.Mock).mockClear().mockResolvedValue(['report 1', 'report 2']);
   });
 
-  it(`should call callback function as a result of glob call on requested files`, () => {
-    mergeCoverageReportsUtils.findAllCoverageReports('somePath', callback);
+  it(`should call callback function as a result of glob call on requested files`, async () => {
+    const result = mergeCoverageReportsUtils.findAllCoverageReports('somePath');
 
-    expect((glob as unknown as jest.Mock)).toHaveBeenCalledWith('somePath', {}, expect.any(Function));
-    expect(callback).toHaveBeenCalledWith({ some: 'error' }, ['report 1', 'report 2']);
+    expect((glob as unknown as jest.Mock)).toHaveBeenCalledWith('somePath', {});
+    await expect(result).resolves.toEqual(['report 1', 'report 2']);
   });
 });
 
@@ -174,9 +170,7 @@ describe(`mergeCoverageReports`, () => {
   } as any;
 
   beforeEach(() => {
-    (glob as unknown as jest.Mock).mockClear().mockImplementation((path, options, cb) => {
-      cb({ some: 'error' }, REPORTS);
-    });
+    (glob as unknown as jest.Mock).mockClear().mockResolvedValue(REPORTS);
     (createCoverageMap as jest.Mock).mockClear().mockReturnValue(coverageMap);
     (readJSONSync as jest.Mock).mockReturnValue(COVERAGE_REPORT);
     (create as jest.Mock).mockClear().mockReturnValue({
@@ -195,12 +189,13 @@ describe(`mergeCoverageReports`, () => {
   });
 
   describe('when all args are filled', () => {
-    it(`should call callback function as a result of glob call on requested files`, () => {
-      mergeCoverageReportsUtils.mergeCoverageReports(ARGS);
+    it(`should call callback function as a result of glob call on requested files`, async () => {
+      await mergeCoverageReportsUtils.mergeCoverageReports(ARGS);
 
       expect((createCoverageMap as jest.Mock)).toHaveBeenCalledWith({});
-      expect(spyOnMergeAll).toHaveBeenCalledWith(coverageMap, REPORTS);
       expect(spyOnFindAllCoverageReports.mock.calls[0][0]).toEqual(reportsFilesGlob);
+
+      expect(spyOnMergeAll).toHaveBeenCalledWith(coverageMap, REPORTS);
       expect(spyOnGenerateReport).toHaveBeenCalledWith(coverageMap, 'text', reportOutPath);
       expect(spyOnGenerateReport).toHaveBeenCalledWith(coverageMap, 'text-summary', reportOutPath);
       expect(spyOnGenerateReport).toHaveBeenCalledWith(coverageMap, 'html', reportOutPath);
@@ -214,15 +209,16 @@ describe(`mergeCoverageReports`, () => {
       reportsFilesGlob = './coverage/**/coverage-final.json';
     });
 
-    it(`should fallback to defaults`, () => {
+    it(`should fallback to defaults`, async () => {
       reportOutPath = './coverage/report';
       reportsFilesGlob = './coverage/**/coverage-final.json';
 
-      mergeCoverageReportsUtils.mergeCoverageReports({} as any);
+      await mergeCoverageReportsUtils.mergeCoverageReports({} as any);
 
       expect((createCoverageMap as jest.Mock)).toHaveBeenCalledWith({});
-      expect(spyOnMergeAll).toHaveBeenCalledWith(coverageMap, REPORTS);
       expect(spyOnFindAllCoverageReports.mock.calls[0][0]).toEqual(reportsFilesGlob);
+
+      expect(spyOnMergeAll).toHaveBeenCalledWith(coverageMap, REPORTS);
       expect(spyOnGenerateReport).toHaveBeenCalledWith(coverageMap, 'text', reportOutPath);
       expect(spyOnGenerateReport).toHaveBeenCalledWith(coverageMap, 'text-summary', reportOutPath);
       expect(spyOnGenerateReport).toHaveBeenCalledWith(coverageMap, 'html', reportOutPath);
