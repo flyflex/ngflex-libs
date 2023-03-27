@@ -18,7 +18,7 @@ export const normalizeJestCoverage = (obj: Record<string, any>) => {
   const result = { ...obj };
 
   Object.entries(result)
-    .filter(([_, v]) => v.data)
+    .filter(([, v]) => v.data)
     .forEach(([k, v]) => {
       result[k] = v.data;
     });
