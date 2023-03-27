@@ -38,7 +38,6 @@ export const mergeAllReports = (coverageMap: CoverageMap, reports: string[]) => 
 };
 
 export const findAllCoverageReports = (path: string, callback: (reports: string[], error: Error | null) => void) => {
-
   glob(path, {}, (err, reports) => {
     callback(reports, err);
   });
