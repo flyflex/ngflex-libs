@@ -1,6 +1,6 @@
 {
   "name": "@ngflex/ngrx-firebase",
-  "version": "3.3.0",
+  "version": "VERSION",
   "license": "MIT",
   "description": "NGFlex NGRX firebase operators and utils",
   "main": "index.js",

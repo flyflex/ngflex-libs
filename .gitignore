@@ -45,3 +45,6 @@ Thumbs.db
 # jest
 jest-cache
 .coverage
+
+# NX
+nx-cloud.env
