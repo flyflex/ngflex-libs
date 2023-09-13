@@ -15,7 +15,8 @@
         "tsConfig": "packages/ngrx-firebase/tsconfig.lib.json",
         "assets": [
           "packages/ngrx-firebase/*.md"
-        ]
+        ],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "publish": {

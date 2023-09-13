@@ -16,7 +16,8 @@
         "tsConfig": "packages/merge-coverage-reports/tsconfig.lib.json",
         "assets": [
           "packages/merge-coverage-reports/*.md"
-        ]
+        ],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "publish": {
