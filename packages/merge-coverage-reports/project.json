@@ -23,7 +23,7 @@
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs merge-coverage-reports readFromPackageJson {args.tag} {args.otp}"
+        "command": "node tools/scripts/publish.mjs merge-coverage-reports useGlobalVersion {args.tag} {args.otp}"
       },
       "dependsOn": [
         "build"
