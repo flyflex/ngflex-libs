@@ -17,19 +17,19 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: setup:checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+          node-version: 20
       - name: setup:cache:node
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: |
+            ${{ github.workspace }}/.yarn/cache
+            ${{ github.workspace }}/.yarn/install-state.gz
+            ${{ github.workspace }}/.nxcache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/nx.json') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: deps:install
