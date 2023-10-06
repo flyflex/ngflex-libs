@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
     "eslint": "8.46.0",
-    "firebase": "10.3.1",
+    "firebase": "10.4.0",
     "fs-extra": "11.1.1",
     "glob": "10.3.3",
     "istanbul-reports": "3.1.5",
