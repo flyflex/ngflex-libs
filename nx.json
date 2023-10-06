@@ -12,7 +12,8 @@
           "lint",
           "test",
           "e2e"
-        ]
+        ],
+        "cacheDirectory": ".nxcache"
       }
     }
   },

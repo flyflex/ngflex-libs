@@ -48,3 +48,4 @@ jest-cache
 
 # NX
 nx-cloud.env
+.nxcache

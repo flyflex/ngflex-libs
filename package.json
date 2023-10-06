@@ -3,7 +3,7 @@
   "version": "3.4.0",
   "license": "MIT",
   "description": "NGFlex ngrx, firebase and js libraries",
-  "packageManager": "yarn@3.5.1",
+  "packageManager": "yarn@3.6.2",
   "repository": {
     "type": "github",
     "url": "https://github.com/flyflex/ngflex-libs"
