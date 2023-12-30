@@ -1,4 +1,4 @@
-# [4.0.0-rc.1](https://github.com/flyflex/ngflex-libs/compare/3.1.0...4.0.0-rc.1) (2023-12-30)
+# [4.0.0](https://github.com/flyflex/ngflex-libs/compare/3.1.0...4.0.0) (2023-12-30)
 
 
 ### Features

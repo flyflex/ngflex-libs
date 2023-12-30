@@ -1,6 +1,6 @@
 {
   "name": "ngflex-libs",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0",
   "license": "MIT",
   "description": "NGFlex ngrx, firebase and js libraries",
   "packageManager": "yarn@3.6.2",
