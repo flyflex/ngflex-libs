@@ -39,6 +39,7 @@ jobs:
       - name: test:lint
         shell: bash
         run: |
+          nx reset
           yarn lint
       - name: build:prod
         shell: bash
