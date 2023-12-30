@@ -58,6 +58,5 @@
     "appsDir": "packages",
     "libsDir": "packages"
   },
-  "cacheDirectory": ".nxcache",
-  "nxCloudAccessToken": "NTk2ZWQ0MWUtYzJlMi00ZGExLTk4MTMtZmE0YjYwMGNlMmVjfHJlYWQ="
+  "cacheDirectory": ".nxcache"
 }
