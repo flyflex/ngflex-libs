@@ -1,11 +1,11 @@
-import { DocumentChangeAction } from '@angular/fire/compat/firestore';
+import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 
 /**
  * Map a firestore document action to NGRX action payload
  */
-export const mapToActionPayload = <T>(documentAction: DocumentChangeAction<T>) => {
+export const mapToActionPayload = <T>(documentAction: QueryDocumentSnapshot<T>) => {
   return {
-    id: documentAction.payload.doc.id,
-    ...documentAction.payload.doc.data(),
+    id: documentAction.id,
+    ...documentAction.data(),
   };
 };

@@ -1,9 +1,9 @@
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Storage } from '@angular/fire/storage';
 
 import { ActionTypes } from './action-types.model';
 
 export interface ActionOptions<T> {
-  angularFireStorage: AngularFireStorage;
+  angularFireStorage: Storage;
   documentKeys: (keyof T)[];
   actionTypes: ActionTypes;
   parentId: string;

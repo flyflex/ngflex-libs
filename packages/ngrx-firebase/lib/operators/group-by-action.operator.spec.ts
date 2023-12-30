@@ -1,4 +1,4 @@
-import { DocumentChangeType } from '@angular/fire/compat/firestore';
+import { DocumentChangeType } from '@angular/fire/firestore';
 import { of } from 'rxjs';
 
 import { groupByAction } from './group-by-action.operator';
@@ -36,7 +36,7 @@ describe('groupByAction', () => {
         groupByAction<any>()
       ).subscribe(spy);
 
-      expect(spy).lastCalledWith([{ actionName: 'loadNoResults' }]);
+      expect(spy).toHaveBeenLastCalledWith([{ actionName: 'loadNoResults' }]);
     });
   });
 
@@ -54,7 +54,7 @@ describe('groupByAction', () => {
         groupByAction<entityType>()
       ).subscribe(spy);
 
-      expect(spy).lastCalledWith(GROUPED_ACTIONS);
+      expect(spy).toHaveBeenLastCalledWith(GROUPED_ACTIONS);
     });
   });
 });
