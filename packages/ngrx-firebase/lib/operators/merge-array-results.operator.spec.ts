@@ -16,7 +16,7 @@ describe('mergeArrayResults', () => {
         mergeArrayResults<any>()
       ).subscribe(spy);
 
-      expect(spy).lastCalledWith([]);
+      expect(spy).toHaveBeenLastCalledWith([]);
     });
   });
 
@@ -30,7 +30,7 @@ describe('mergeArrayResults', () => {
         mergeArrayResults<any>()
       ).subscribe(spy);
 
-      expect(spy).lastCalledWith([
+      expect(spy).toHaveBeenLastCalledWith([
         entity1,
         entity2,
       ]);

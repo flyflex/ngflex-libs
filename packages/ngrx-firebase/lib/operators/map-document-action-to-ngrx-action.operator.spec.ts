@@ -37,11 +37,11 @@ describe('map firebase document action to ngrx action operator', () => {
           mapDocumentActionToNgrxAction(actionsMocks),
         ).subscribe(spy);
 
-        expect(spy).lastCalledWith({ some: 'observableData' });
+        expect(spy).toHaveBeenLastCalledWith({ some: 'observableData' });
 
-        expect(fetchFirebaseStorageDocument).lastCalledWith([], null);
+        expect(fetchFirebaseStorageDocument).toHaveBeenLastCalledWith([], null);
         expect(groupByAction).toHaveBeenCalled();
-        expect(mapToActions).lastCalledWith(actionsMocks, {
+        expect(mapToActions).toHaveBeenLastCalledWith(actionsMocks, {
           includeParentIdInPayload: false,
           parentIdPayloadKey: null,
           includeParentIdInNoResults: false,
@@ -68,11 +68,11 @@ describe('map firebase document action to ngrx action operator', () => {
           }),
         ).subscribe(spy);
 
-        expect(spy).lastCalledWith({ some: 'observableData' });
+        expect(spy).toHaveBeenLastCalledWith({ some: 'observableData' });
 
-        expect(fetchFirebaseStorageDocument).lastCalledWith(['document', 'image'], { fire: 'storageMock' });
+        expect(fetchFirebaseStorageDocument).toHaveBeenLastCalledWith(['document', 'image'], { fire: 'storageMock' });
         expect(groupByAction).toHaveBeenCalled();
-        expect(mapToActions).lastCalledWith(actionsMocks, {
+        expect(mapToActions).toHaveBeenLastCalledWith(actionsMocks, {
           parentId: 'some parentId',
           includeParentIdInPayload: true,
           parentIdPayloadKey: 'parentKey',

@@ -1,18 +1,18 @@
-import { DocumentChangeAction } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { DocumentChange, DocumentData } from '@angular/fire/firestore';
+import { Storage, ref, getDownloadURL } from '@angular/fire/storage';
 
-import { of, combineLatest } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { of, combineLatest, from } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 /**
  * Replace firebase storage document URL in firestore data
  */
-export const fetchFirebaseStorageDocument = <T>(documentKeys: (keyof T)[], firestorage?: AngularFireStorage) =>
-  switchMap((changes: DocumentChangeAction<T>[]) => !changes.length ? of([]) : combineLatest(
-    changes.map((documentChange: DocumentChangeAction<T>) => of(documentChange).pipe(
-      switchMap((change: DocumentChangeAction<T>) => {
-        const id: string = change.payload.doc.id;
-        const data: T = change.payload.doc.data();
+export const fetchFirebaseStorageDocument = <T>(documentKeys: (keyof T)[], firestorage?: Storage) =>
+  switchMap((changes: DocumentChange<T, DocumentData>[]) => !changes.length ? of([]) : combineLatest(
+    changes.map((documentChange: DocumentChange<T, DocumentData>) => of(documentChange).pipe(
+      switchMap((change: DocumentChange<T, DocumentData>) => {
+        const id: string = change.doc.id;
+        const data: T = change.doc.data();
 
         if (!documentKeys.length || !firestorage) {
           return of({
@@ -30,9 +30,11 @@ export const fetchFirebaseStorageDocument = <T>(documentKeys: (keyof T)[], fires
 
             const defaultData = { [docKey]: path };
 
+
+            const imageRef = ref(firestorage, path);
+
             return path
-              ? firestorage.ref(path).getDownloadURL().pipe(
-                take(1),
+              ? from(getDownloadURL(imageRef)).pipe(
                 map((url: string) => {
                   return {
                     [docKey]: url,

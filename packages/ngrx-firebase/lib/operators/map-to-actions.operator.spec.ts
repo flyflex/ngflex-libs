@@ -67,7 +67,7 @@ describe('mapToActions', () => {
             mapToActions(actionsMocksCreators)
           ).subscribe(spy);
 
-          expect(spy).lastCalledWith(createActionMockLoadNoResult);
+          expect(spy).toHaveBeenLastCalledWith(createActionMockLoadNoResult);
           expect(loadNoResultsMock).toHaveBeenCalledWith();
         });
       });
@@ -90,7 +90,7 @@ describe('mapToActions', () => {
             ),
           ).subscribe(spy);
 
-          expect(spy).lastCalledWith(createActionMockLoadNoResult);
+          expect(spy).toHaveBeenLastCalledWith(createActionMockLoadNoResult);
           expect(loadNoResultsMock).toHaveBeenCalledWith({ parentId: PARENT_ID });
         });
       });
@@ -113,7 +113,7 @@ describe('mapToActions', () => {
             ),
           ).subscribe(spy);
 
-          expect(spy).lastCalledWith(createActionMockLoadNoResult);
+          expect(spy).toHaveBeenLastCalledWith(createActionMockLoadNoResult);
           expect(loadNoResultsMock).toHaveBeenCalledWith({ parentId2: PARENT_ID });
         });
       });
@@ -136,7 +136,7 @@ describe('mapToActions', () => {
             ),
           ).subscribe(spy);
 
-          expect(spy).lastCalledWith(createActionMockLoadNoResult);
+          expect(spy).toHaveBeenLastCalledWith(createActionMockLoadNoResult);
           expect(loadNoResultsMock).toHaveBeenCalledWith();
         });
       });
@@ -159,7 +159,7 @@ describe('mapToActions', () => {
             ),
           ).subscribe(spy);
 
-          expect(spy).lastCalledWith(createActionMockLoadNoResult);
+          expect(spy).toHaveBeenLastCalledWith(createActionMockLoadNoResult);
           expect(loadNoResultsMock).toHaveBeenCalledWith();
         });
       });
