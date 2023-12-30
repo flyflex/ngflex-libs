@@ -11,10 +11,10 @@
   "author": "FlyFlex",
   "scripts": {
     "build:ngrx-firebase": "nx run ngrx-firebase:build",
-    "build": "nx run-many --target=build --all --skipNxCache",
-    "lint": "nx run-many --target=lint --all --skipNxCache",
+    "build": "nx run-many --target=build --all",
+    "lint": "nx run-many --target=lint --all",
     "test:affected": "nx affected --target=test --coverage",
-    "test": "nx run-many --target=test --all --coverage --skipNxCache",
+    "test": "nx run-many --target=test --all --coverage",
     "test:watch": "jest --watch",
     "publish:ngrx-firebase": "nx run ngrx-firebase:publish --tag=next --otp",
     "publish:merge-coverage-reports": "nx run merge-coverage-reports:publish --tag=next --otp",
