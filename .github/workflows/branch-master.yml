@@ -50,7 +50,7 @@ jobs:
           yarn test
           yarn merge-reports
       - name: test:coverage
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ${{ github.workspace }}/coverage/report/lcov.info
@@ -59,4 +59,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ngrx-firebase-${{ github.sha }}
-          path: ${{ github.workspace }}/lib
+          path: ${{ github.workspace }}/dist/packages

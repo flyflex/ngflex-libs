@@ -19,7 +19,7 @@
     "publish:ngrx-firebase": "nx run ngrx-firebase:publish --tag=next --otp",
     "publish:merge-coverage-reports": "nx run merge-coverage-reports:publish --tag=next --otp",
     "verif:all": "yarn build && yarn lint && yarn test",
-    "merge-reports": "nx run merge-coverage-reports:merge"
+    "merge-reports": "nx run merge-coverage-reports:merge && cat coverage/report/lcov.info"
   },
   "dependencies": {
     "minimist": "1.2.8",
