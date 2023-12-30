@@ -34,8 +34,8 @@
       "options": {
         "command": "node dist/packages/merge-coverage-reports/bin/merge-coverage-reports.js"
       },
-      "dependsOn": [
-        "build"
+      "outputs": [
+        "{workspaceRoot}/coverage/report"
       ]
     },
     "lint": {
