@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
 
 import { actionMap } from '../models/action-map.model';
-import { NgrxDocumentChange } from '../models/document-change.model';
+import { NgrxDocumentChange } from '../models/ngrx-document-change.model';
 import { StoreAction } from '../models/store-action.model';
 import { WithId } from '../models/with-id.model';
 
