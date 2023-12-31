@@ -1,6 +1,6 @@
 {
   "name": "ngflex-libs",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0-rc.2",
   "license": "MIT",
   "description": "NGFlex ngrx, firebase and js libraries",
   "packageManager": "yarn@3.6.2",
@@ -27,7 +27,6 @@
   },
   "devDependencies": {
     "@angular/fire": "16.0.0",
-    "@firebase/app-types": "0.9.0",
     "@ngrx/store": "16.1.0",
     "@nx/eslint": "17.2.8",
     "@nx/eslint-plugin": "17.2.8",

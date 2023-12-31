@@ -8320,7 +8320,6 @@ __metadata:
   resolution: "ngflex-libs@workspace:."
   dependencies:
     "@angular/fire": 16.0.0
-    "@firebase/app-types": 0.9.0
     "@ngrx/store": 16.1.0
     "@nx/eslint": 17.2.8
     "@nx/eslint-plugin": 17.2.8

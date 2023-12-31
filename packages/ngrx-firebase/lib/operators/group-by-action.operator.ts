@@ -1,19 +1,19 @@
 import { map } from 'rxjs/operators';
 
 import { actionMap } from '../models/action-map.model';
-import { DocumentChange } from '../models/document-change.model';
+import { NgrxDocumentChange } from '../models/document-change.model';
 import { StoreAction } from '../models/store-action.model';
 import { WithId } from '../models/with-id.model';
 
 /**
  * Group DocumentChangeAction by action type compatible with ngrx entity actions
  */
-export const groupByAction = <T>() => map((documentChanges: DocumentChange<T>[]): StoreAction<T>[] => {
+export const groupByAction = <T>() => map((documentChanges: NgrxDocumentChange<T>[]): StoreAction<T>[] => {
   if (!documentChanges.length) {
     return [{ actionName: 'loadNoResults' }];
   }
 
-  return Object.values(documentChanges.reduce((current: { [type: string]: StoreAction<T> }, documentChange: DocumentChange<T>) => {
+  return Object.values(documentChanges.reduce((current: { [type: string]: StoreAction<T> }, documentChange: NgrxDocumentChange<T>) => {
     const actionType: string = documentChange.type;
     const actionName: string = actionMap[actionType];
     const payload: WithId<T>[] = [];
