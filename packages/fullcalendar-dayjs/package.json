@@ -14,10 +14,10 @@
     "dayjs"
   ],
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.0"
   },
   "peerDependencies": {
-    "@fullcalendar/core": "^6..0.0",
+    "@fullcalendar/core": "^6.0.0",
     "dayjs": "^1.11.0"
   },
   "type": "commonjs",
