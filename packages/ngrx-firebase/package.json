@@ -25,10 +25,10 @@
     "index.d.ts"
   ],
   "peerDependencies": {
-    "@angular/core": ">= 11.0.0",
-    "@angular/fire": "^7.0.0",
-    "@ngrx/store": ">= 11.0.0",
-    "firebase": "^9.0.0",
-    "rxjs": "^7.0.0"
+    "@angular/core": ">= 17.0.0",
+    "@angular/fire": "^17.0.0",
+    "@ngrx/store": "^17.0.0",
+    "firebase": "^10.0.0",
+    "rxjs": "^7.4.0"
   }
 }
