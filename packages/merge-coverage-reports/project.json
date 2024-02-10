@@ -45,7 +45,7 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "packages/merge-coverage-reports/**/*.ts"
+          "{projectRoot}/**/*.ts"
         ]
       }
     },
