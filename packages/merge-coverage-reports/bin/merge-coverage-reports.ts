@@ -70,8 +70,6 @@ export const mergeCoverageReports = async (args: ParsedArgs) => {
 
   const reports = await findAllCoverageReports(reportsFilesGlob);
 
-  console.error(reports);
-
   if (Array.isArray(reports)) {
     mergeAllReports(coverageMap, reports);
     generateReport(coverageMap, 'text', reportOutPath);

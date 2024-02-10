@@ -21,7 +21,7 @@
     "publish:fullcalendar-dayjs": "nx run fullcalendar-dayjs:publish --tag=next --otp",
     "publish:all": "nx run-many --target=publish --all --parallel=1 --tag=next --otp",
     "verif:all": "yarn build && yarn lint && yarn test",
-    "merge-reports": "nx run merge-coverage-reports:merge && cat coverage/report/lcov.info",
+    "merge-reports": "nx run merge-coverage-reports:merge",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
