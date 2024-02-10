@@ -1,15 +1,15 @@
 {
   "name": "@ngflex/ngrx-firebase",
-  "version": "4.0.0",
+  "version": "VERSION",
   "license": "MIT",
   "description": "NGFlex NGRX firebase operators and utils",
   "main": "index.js",
   "types": "index.d.ts",
   "author": "FlyFlex",
-  "homepage": "https://github.com/flyflex/ngflex-ngrx-firebase",
+  "homepage": "https://github.com/flyflex/ngflex-libs",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/flyflex/ngflex-ngrx-firebase"
+    "type": "github",
+    "url": "https://github.com/flyflex/ngflex-libs"
   },
   "keywords": [
     "angular",
@@ -25,10 +25,10 @@
     "index.d.ts"
   ],
   "peerDependencies": {
-    "@angular/core": ">= 11.0.0",
-    "@angular/fire": "^7.0.0",
-    "@ngrx/store": ">= 11.0.0",
-    "firebase": "^9.0.0",
-    "rxjs": "^7.0.0"
+    "@angular/core": ">= 17.0.0",
+    "@angular/fire": "^17.0.0",
+    "@ngrx/store": "^17.0.0",
+    "firebase": "^10.0.0",
+    "rxjs": "^7.4.0"
   }
 }

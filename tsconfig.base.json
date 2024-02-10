@@ -8,16 +8,19 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
     "lib": [
-      "es2017",
+      "es2022",
       "dom"
     ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ngflex/fullcalendar-dayjs": [
+        "packages/fullcalendar-dayjs/src/index.ts"
+      ],
       "@ngflex/merge-coverage-reports": [
         "packages/merge-coverage-reports/src/index.ts"
       ],

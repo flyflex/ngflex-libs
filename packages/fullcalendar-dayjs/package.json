@@ -1,0 +1,26 @@
+{
+  "name": "@ngflex/fullcalendar-dayjs",
+  "version": "VERSION",
+  "license": "MIT",
+  "description": "NGFlex Fullcalendar Dayjs Adapter",
+  "author": "FlyFlex",
+  "homepage": "https://github.com/flyflex/ngflex-libs",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/flyflex/ngflex-libs"
+  },
+  "keywords": [
+    "fullcalendar",
+    "dayjs"
+  ],
+  "dependencies": {
+    "tslib": "^2.6.0"
+  },
+  "peerDependencies": {
+    "@fullcalendar/core": "^6.0.0",
+    "dayjs": "^1.11.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

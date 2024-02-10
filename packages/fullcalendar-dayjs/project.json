@@ -1,7 +1,7 @@
 {
-  "name": "merge-coverage-reports",
+  "name": "fullcalendar-dayjs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/merge-coverage-reports/src",
+  "sourceRoot": "packages/fullcalendar-dayjs/src",
   "projectType": "library",
   "targets": {
     "build": {
@@ -10,12 +10,11 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/packages/merge-coverage-reports",
-        "main": "packages/merge-coverage-reports/bin/merge-coverage-reports.ts",
-        "bin": "packages/merge-coverage-reports/bin/merge-coverage-reports.ts",
-        "tsConfig": "packages/merge-coverage-reports/tsconfig.lib.json",
+        "outputPath": "dist/packages/fullcalendar-dayjs",
+        "main": "packages/fullcalendar-dayjs/src/index.ts",
+        "tsConfig": "packages/fullcalendar-dayjs/tsconfig.lib.json",
         "assets": [
-          "packages/merge-coverage-reports/*.md"
+          "packages/fullcalendar-dayjs/*.md"
         ],
         "updateBuildableProjectDepsInPackageJson": true
       }
@@ -23,19 +22,10 @@
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs merge-coverage-reports useGlobalVersion {args.tag} {args.otp}"
+        "command": "node tools/scripts/publish.mjs fullcalendar-dayjs {args.ver} {args.tag}"
       },
       "dependsOn": [
         "build"
-      ]
-    },
-    "merge": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node dist/packages/merge-coverage-reports/bin/merge-coverage-reports.js"
-      },
-      "outputs": [
-        "{workspaceRoot}/coverage/report"
       ]
     },
     "lint": {
@@ -55,7 +45,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "packages/merge-coverage-reports/jest.config.ts",
+        "jestConfig": "packages/fullcalendar-dayjs/jest.config.ts",
         "passWithNoTests": true
       }
     }
