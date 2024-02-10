@@ -1,3 +1,25 @@
+# [4.0.0](https://github.com/flyflex/ngflex-libs/compare/4.0.0-rc.2...4.0.0) (2024-02-10)
+
+
+### Bug Fixes
+
+* **merge-coverage-reports:** remove debug statement ([b2eb077](https://github.com/flyflex/ngflex-libs/commit/b2eb077b3169f6d85d1dea24ae6833ca38ea8fc3))
+
+
+### Features
+
+* **fullcalendar-dayjs:** add library ([afa74fa](https://github.com/flyflex/ngflex-libs/commit/afa74fa7b220fa1cebd386438cf9fe1540760fff))
+* **fullcalendar-dayjs:** update formatting and add tests ([1107b45](https://github.com/flyflex/ngflex-libs/commit/1107b45bd972217031e6e1c5f43d8ba372c72a08))
+* **fullcalendar-dayjs:** update peer dependencies ([f81a731](https://github.com/flyflex/ngflex-libs/commit/f81a731e603cc6831e4d05219fcce1f1d78fd3f1))
+* **ngrx-firebase:** update peer dependencies ([60d807d](https://github.com/flyflex/ngflex-libs/commit/60d807d9ec3258562f06c614f9707b03073ac907))
+
+
+### BREAKING CHANGES
+
+* **ngrx-firebase:** now requires angular >=17 and firebase >=10
+
+
+
 # [4.0.0-rc.2](https://github.com/flyflex/ngflex-libs/compare/4.0.0-rc.1...4.0.0-rc.2) (2023-12-31)
 
 
