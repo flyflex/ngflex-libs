@@ -6,7 +6,8 @@
     "types": [
       "jest",
       "node"
-    ]
+    ],
+    "esModuleInterop": true
   },
   "include": [
     "jest.config.ts",

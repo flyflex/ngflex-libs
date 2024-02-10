@@ -10,7 +10,7 @@
     "noImplicitReturns": false,
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false
   },
   "files": [],
   "include": [],
