@@ -11,11 +11,13 @@ export type ActionCreatorWithParentIdProp = ActionCreator<string, (props: {
 
 export type ActionCreatorWithNoProp = ActionCreator<string>;
 
+export type ActionCreatorType = ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp;
+
 export type ActionTypes = {
-  load?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
-  loadNoResults?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
-  loadFail?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
-  addMany?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
-  upsertMany?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
-  removeMany?: ActionCreatorWithNoProp | ActionCreatorWithParentIdProp | ActionCreatorWithParentIdPropAndPayloadProp,
+  load?: ActionCreatorType,
+  loadNoResults?: ActionCreatorType,
+  loadFail?: ActionCreatorType,
+  addMany?: ActionCreatorType,
+  upsertMany?: ActionCreatorType,
+  removeMany?: ActionCreatorType,
 };
