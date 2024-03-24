@@ -1,10 +1,10 @@
 import { collectionChanges, collectionData, Query, DocumentData } from '@angular/fire/firestore';
-import { switchMap, of } from 'rxjs';
+import { startWith, switchMap, take } from 'rxjs/operators';
 
 import { ActionTypes, ActionOptions, ActionCreatorWithNoProp } from '../models';
 import { mapDocumentActionToNgrxAction } from './map-document-action-to-ngrx-action.operator';
 
-export const wrapCollectionChange = <T>(
+export const wrapCollectionChangesToNgrx = <T>(
   query: Query<T, DocumentData>,
   actions: ActionTypes,
   mappingOptions: Partial<ActionOptions<T>> & { handleEmptyCollections?: boolean },
@@ -17,9 +17,12 @@ export const wrapCollectionChange = <T>(
 
   if (handleEmptyCollections && !!actions.loadNoResults) {
     return collectionData(query).pipe(
+      take(1),
       switchMap((data) => {
         if (!data.length) {
-          return of((actions.loadNoResults as ActionCreatorWithNoProp)());
+          return collChangeStream.pipe(
+            startWith((actions.loadNoResults as ActionCreatorWithNoProp)()),
+          );
         }
 
         return collChangeStream;
