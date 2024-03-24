@@ -21,6 +21,25 @@ describe('wrapCollectionChange', () => {
   });
 
   describe('when handleEmptyCollections is set to true', () => {
+    it('should handle empty collections considering default option value to true', (done) => {
+      const queryMock: any = {};
+      const actions = {
+        loadNoResults: jest.fn().mockName('loadNoResults'),
+      } as any;
+      const ngrxOptions = { otherOption: 'value' } as any;
+
+      (fireStore.collectionData as jest.Mock).mockReturnValue(of([]));
+      (fireStore.collectionChanges as jest.Mock).mockReturnValue(of([]));
+      (mapDocumentActionToNgrxAction as jest.Mock).mockImplementation(() => () => of([]));
+
+      wrapCollectionChange(queryMock, actions, ngrxOptions).subscribe(() => {
+        expect(actions.loadNoResults).toHaveBeenCalled();
+        expect((mapDocumentActionToNgrxAction as jest.Mock)).toHaveBeenCalledWith(actions, ngrxOptions);
+
+        done();
+      });
+    });
+
     it('should handle empty collections', (done) => {
       const queryMock: any = {};
       const actions = {
