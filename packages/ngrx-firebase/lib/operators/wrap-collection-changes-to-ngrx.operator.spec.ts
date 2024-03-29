@@ -43,6 +43,30 @@ describe('wrapCollectionChangesToNgrx', () => {
 
     });
 
+    it('should include parentId in noresult action when required', () => {
+      const queryMock: any = {};
+      const actions = {
+        loadNoResults: jest.fn().mockReturnValue({ type: 'noResults', props: { someParent: 'parentId' } }).mockName('loadNoResults'),
+      } as any;
+      const ngrxOptions = {
+        otherOption: 'value',
+        includeParentIdInNoResults: true,
+        parentId: 'parentId',
+        parentIdProp: 'someParent',
+      } as any;
+
+      (fireStore.collectionData as jest.Mock).mockReturnValue(of([]));
+      (fireStore.collectionChanges as jest.Mock).mockReturnValue(NEVER);
+      (mapDocumentActionToNgrxAction as jest.Mock).mockImplementation(() => (source) => source);
+
+      wrapCollectionChangesToNgrx(queryMock, actions, ngrxOptions).subscribe(spy);
+
+      expect(actions.loadNoResults).toHaveBeenCalledWith({ someParent: 'parentId' });
+      expect(actions.loadNoResults).toHaveBeenCalledTimes(1);
+      expect((mapDocumentActionToNgrxAction as jest.Mock)).toHaveBeenCalledWith(actions, ngrxOptions);
+
+    });
+
     it('should handle empty collections', () => {
       const queryMock: any = {};
       const actions = {
