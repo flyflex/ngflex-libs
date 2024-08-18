@@ -1,13 +1,12 @@
 import { ActionCreator } from '@ngrx/store';
-import { TypedAction } from '@ngrx/store/src/models';
 
 export type ActionCreatorWithParentIdPropAndPayloadProp = ActionCreator<string, (props: {
   [propKey: string]: any;
-}) => (TypedAction<string> & any)>;
+}) => any>;
 
 export type ActionCreatorWithParentIdProp = ActionCreator<string, (props: {
   [parentIdProp: string]: string;
-}) => (TypedAction<string> & any)>;
+}) => any>;
 
 export type ActionCreatorWithNoProp = ActionCreator<string>;
 

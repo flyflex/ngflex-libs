@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "affected": {
-    "defaultBase": "master"
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": [
@@ -61,5 +58,6 @@
     "appsDir": "packages",
     "libsDir": "packages"
   },
-  "cacheDirectory": ".nxcache"
+  "cacheDirectory": ".nxcache",
+  "defaultBase": "master"
 }

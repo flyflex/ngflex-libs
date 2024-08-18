@@ -1,4 +1,3 @@
-import { TypedAction } from '@ngrx/store/src/models';
 import { switchMap } from 'rxjs/operators';
 
 import { ActionOptions } from '../models/action-options.model';
@@ -25,8 +24,7 @@ export const mapToActions = <T>(
     payloadProp,
   }: Partial<ActionOptions<T>> = {},
 ) =>
-  switchMap((groupedActions: StoreAction<T>[]):
-    (TypedAction<string> & any)[] =>
+  switchMap((groupedActions: StoreAction<T>[]) =>
     groupedActions.map((storeAction: StoreAction<T>) => {
       if (storeAction.actionName === 'loadNoResults') {
         if (includeParentIdInNoResults && parentId) {
