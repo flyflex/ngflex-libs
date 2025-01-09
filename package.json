@@ -1,9 +1,9 @@
 {
   "name": "ngflex-libs",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "license": "MIT",
   "description": "NGFlex ngrx, firebase and js libraries",
-  "packageManager": "yarn@4.1.0",
+  "packageManager": "yarn@4.6.0",
   "repository": {
     "type": "github",
     "url": "https://github.com/flyflex/ngflex-libs"
@@ -26,28 +26,28 @@
   },
   "dependencies": {
     "minimist": "1.2.8",
-    "tslib": "2.6.3"
+    "tslib": "2.8.1"
   },
   "devDependencies": {
     "@angular/fire": "18.0.1",
     "@fullcalendar/core": "6.1.15",
-    "@ngrx/store": "18.0.2",
-    "@nx/eslint": "19.6.0",
-    "@nx/eslint-plugin": "19.6.0",
-    "@nx/jest": "19.6.0",
-    "@nx/js": "19.6.0",
-    "@nx/workspace": "19.6.0",
+    "@ngrx/store": "19.0.0",
+    "@nx/eslint": "20.3.1",
+    "@nx/eslint-plugin": "20.3.1",
+    "@nx/jest": "20.3.1",
+    "@nx/js": "20.3.1",
+    "@nx/workspace": "20.3.1",
     "@swc-node/register": "1.10.9",
-    "@swc/core": "1.7.11",
+    "@swc/core": "1.10.6",
     "@types/fs-extra": "11.0.4",
-    "@types/jest": "29.5.12",
+    "@types/jest": "29.5.14",
     "@types/minimist": "1.2.5",
-    "@types/node": "22.4.0",
-    "@typescript-eslint/eslint-plugin": "8.1.0",
-    "@typescript-eslint/parser": "8.1.0",
-    "dayjs": "1.11.12",
-    "eslint": "9.9.0",
-    "firebase": "10.13.0",
+    "@types/node": "22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "dayjs": "1.11.13",
+    "eslint": "9.17.0",
+    "firebase": "11.1.0",
     "fs-extra": "11.2.0",
     "glob": "11.0.0",
     "istanbul-reports": "3.1.7",
@@ -56,16 +56,16 @@
     "jest-environment-jsdom": "29.7.0",
     "jest-environment-node": "29.7.0",
     "jest-haste-map": "29.7.0",
-    "jest-preset-angular": "14.2.2",
+    "jest-preset-angular": "14.4.2",
     "jest-resolve": "29.7.0",
-    "nx": "19.6.0",
-    "prettier": "3.3.3",
+    "nx": "20.3.1",
+    "prettier": "3.4.2",
     "rxjs": "7.8.1",
-    "ts-jest": "29.2.4",
+    "ts-jest": "29.2.5",
     "ts-node": "10.9.2",
-    "typescript": "5.5.4"
+    "typescript": "5.7.3"
   },
   "nx": {
-    "includedScripts": []
+    "includedScripts": [ ]
   }
 }

@@ -1,3 +1,25 @@
+# [4.1.5](https://github.com/flyflex/ngflex-libs/compare/4.0.0...4.1.5) (2025-01-08)
+
+### Features
+
+* **ngrx-firebase:** update to add support for firebase 11 and angular 19 ([036d887](https://github.com/flyflex/ngflex-libs/commit/036d887cce65791b5411e2400bfcda33156ade30))
+
+# [4.1.4](https://github.com/flyflex/ngflex-libs/compare/4.0.0...4.1.5) (2024-08-18)
+
+
+### Bug Fixes
+
+* **ngrx-firebase:** add missing export ([#38](https://github.com/flyflex/ngflex-libs/issues/38)) ([1988c58](https://github.com/flyflex/ngflex-libs/commit/1988c58b0a4a77990ac437f7819b1914f754303f))
+* **ngrx-firebase:** allow including parentId in load no result action in wrapper ([#40](https://github.com/flyflex/ngflex-libs/issues/40)) ([c8f07c9](https://github.com/flyflex/ngflex-libs/commit/c8f07c9b0abea262af5154d0eecf30a2e860ac18))
+* **ngrx-firebase:** fix multiple initial streams ([#39](https://github.com/flyflex/ngflex-libs/issues/39)) ([6cb815f](https://github.com/flyflex/ngflex-libs/commit/6cb815fb3af25519d8dbe17983db8c3948ac26dc))
+
+
+### Features
+
+* **ngrx-firebase:** add operator to handle empty changes from sdk10 ([#37](https://github.com/flyflex/ngflex-libs/issues/37)) ([d2b02cf](https://github.com/flyflex/ngflex-libs/commit/d2b02cf47ab94987de293905d5b4f7c40214d94f))
+* update dependencies ([#41](https://github.com/flyflex/ngflex-libs/issues/41)) ([4b13024](https://github.com/flyflex/ngflex-libs/commit/4b130246192defe8e7eee9f036cda80f35174017))
+
+
 # [4.0.0](https://github.com/flyflex/ngflex-libs/compare/4.0.0-rc.2...4.0.0) (2024-02-10)
 
 
