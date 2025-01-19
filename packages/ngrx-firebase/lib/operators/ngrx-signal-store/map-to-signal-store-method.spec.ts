@@ -1,7 +1,6 @@
 import { of } from 'rxjs';
 
-import { SignalStoreMethodsMap } from '../../models/action-types.model';
-import { JestUtils } from '../../tests/jest-utils';
+import { SignalStoreMethodsMap } from '../../models/signal-store-method-map.model';
 import { mapToSignalStoreMethod } from './map-to-signal-store-method';
 
 const actionsMocksCreators: SignalStoreMethodsMap = {

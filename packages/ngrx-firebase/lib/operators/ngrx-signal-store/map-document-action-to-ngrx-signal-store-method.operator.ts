@@ -1,7 +1,7 @@
 import { pipe } from 'rxjs';
 
 import { ActionOptions } from '../../models/action-options.model';
-import { SignalStoreMethodsMap } from '../../models/action-types.model';
+import { SignalStoreMethodsMap } from '../../models/signal-store-method-map.model';
 
 import { fetchFirebaseStorageDocument } from '../fetch-firebase-storage-document.operator';
 import { groupByAction } from '../group-by-action.operator';

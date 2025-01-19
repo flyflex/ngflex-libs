@@ -6,8 +6,8 @@ import { groupByAction } from '../group-by-action.operator';
 import { mapDocumentActionToNgrxAction } from './map-document-action-to-ngrx-action.operator';
 import { mapToActions } from './map-to-actions.operator';
 
-jest.mock('./fetch-firebase-storage-document.operator');
-jest.mock('./group-by-action.operator');
+jest.mock('../fetch-firebase-storage-document.operator');
+jest.mock('../group-by-action.operator');
 jest.mock('./map-to-actions.operator');
 
 const actionsMocks = {

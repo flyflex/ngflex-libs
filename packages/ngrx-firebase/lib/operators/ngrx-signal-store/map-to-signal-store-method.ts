@@ -1,7 +1,7 @@
 import { switchMap } from 'rxjs/operators';
 
 import { ActionOptions } from '../../models/action-options.model';
-import { SignalStoreMethodsMap } from '../../models/action-types.model';
+import { SignalStoreMethodsMap } from '../../models/signal-store-method-map.model';
 import { StoreAction } from '../../models/store-action.model';
 import { SignalStoreMethod } from '../../models/signal-store-method.model';
 
