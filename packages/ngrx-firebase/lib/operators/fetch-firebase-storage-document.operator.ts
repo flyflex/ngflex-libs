@@ -1,7 +1,7 @@
 import { DocumentChange } from '@angular/fire/firestore';
-import { Storage, ref, getDownloadURL } from '@angular/fire/storage';
+import { Storage, getDownloadURL, ref } from '@angular/fire/storage';
 
-import { of, combineLatest, from } from 'rxjs';
+import { combineLatest, from, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { NgrxDocumentChange } from '../models';
 

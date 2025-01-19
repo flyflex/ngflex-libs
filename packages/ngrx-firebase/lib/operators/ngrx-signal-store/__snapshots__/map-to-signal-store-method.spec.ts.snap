@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mapToSignalStoreMethod when using signal store method creators from NGRX when mapping standard actions by default with no parent id should return methods with proper payload and empty parent id 1`] = `
+Array [
+  Array [
+    Object {
+      "methodName": "entityAddMock",
+      "payload": Object {
+        "parentIdKey": undefined,
+        "payloadProp": Array [
+          Object {
+            "data": "value1",
+            "id": "id1",
+          },
+          Object {
+            "data": "value2",
+            "id": "id2",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityRemoveMock",
+      "payload": Object {
+        "parentIdKey": undefined,
+        "payloadProp": Array [
+          Object {
+            "data": "value3",
+            "id": "id3",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityUpdateMock",
+      "payload": Object {
+        "parentIdKey": undefined,
+        "payloadProp": Array [
+          Object {
+            "data": "changedValue2",
+            "id": "id2",
+          },
+        ],
+      },
+    },
+  ],
+]
+`;
+
+exports[`mapToSignalStoreMethod when using signal store method creators from NGRX when mapping standard actions by default with parent Id should return methods with proper payload and parent id 1`] = `
+Array [
+  Array [
+    Object {
+      "methodName": "entityAddMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "value1",
+            "id": "id1",
+          },
+          Object {
+            "data": "value2",
+            "id": "id2",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityRemoveMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "value3",
+            "id": "id3",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityUpdateMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "changedValue2",
+            "id": "id2",
+          },
+        ],
+      },
+    },
+  ],
+]
+`;
+
+exports[`mapToSignalStoreMethod when using signal store method creators from NGRX when mapping standard actions with option to include parent id in payload when a parent id payload key is set in option should return methods with payload and parent id as given key value 1`] = `
+Array [
+  Array [
+    Object {
+      "methodName": "entityAddMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "value1",
+            "id": "id1",
+            "parentKey": "someParentId1",
+          },
+          Object {
+            "data": "value2",
+            "id": "id2",
+            "parentKey": "someParentId1",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityRemoveMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "value3",
+            "id": "id3",
+            "parentKey": "someParentId1",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityUpdateMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "changedValue2",
+            "id": "id2",
+            "parentKey": "someParentId1",
+          },
+        ],
+      },
+    },
+  ],
+]
+`;
+
+exports[`mapToSignalStoreMethod when using signal store method creators from NGRX when mapping standard actions with option to include parent id in payload when no parent id payload key is not given in options should return methods with payload but no parent id 1`] = `
+Array [
+  Array [
+    Object {
+      "methodName": "entityAddMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "value1",
+            "id": "id1",
+          },
+          Object {
+            "data": "value2",
+            "id": "id2",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityRemoveMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "value3",
+            "id": "id3",
+          },
+        ],
+      },
+    },
+  ],
+  Array [
+    Object {
+      "methodName": "entityUpdateMock",
+      "payload": Object {
+        "parentIdKey": "someParentId1",
+        "payloadProp": Array [
+          Object {
+            "data": "changedValue2",
+            "id": "id2",
+          },
+        ],
+      },
+    },
+  ],
+]
+`;

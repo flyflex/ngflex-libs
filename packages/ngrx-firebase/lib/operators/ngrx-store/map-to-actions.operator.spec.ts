@@ -1,8 +1,8 @@
 import { of } from 'rxjs';
 
-import { JestUtils } from '../tests/jest-utils';
+import { ActionTypes } from '../../models/action-types.model';
+import { JestUtils } from '../../tests/jest-utils';
 import { mapToActions } from './map-to-actions.operator';
-import { ActionTypes } from '../models/action-types.model';
 
 const createActionMockAdd = jest.fn();
 const createActionMockUpdate = jest.fn();

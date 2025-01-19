@@ -1,7 +1,7 @@
-import { collectionChanges, collectionData, Query, DocumentData } from '@angular/fire/firestore';
+import { collectionChanges, collectionData, DocumentData, Query } from '@angular/fire/firestore';
 import { startWith, switchMap, take } from 'rxjs/operators';
 
-import { ActionTypes, ActionOptions, ActionCreatorWithNoProp, ActionCreatorWithParentIdProp } from '../models';
+import { ActionCreatorWithNoProp, ActionCreatorWithParentIdProp, ActionOptions, ActionTypes } from '../../models';
 import { mapDocumentActionToNgrxAction } from './map-document-action-to-ngrx-action.operator';
 
 export const wrapCollectionChangesToNgrx = <T>(

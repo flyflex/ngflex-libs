@@ -1,6 +1,6 @@
 {
   "name": "ngflex-libs",
-  "version": "4.1.5",
+  "version": "4.2.0-rc.2",
   "license": "MIT",
   "description": "NGFlex ngrx, firebase and js libraries",
   "packageManager": "yarn@4.6.0",
@@ -17,6 +17,7 @@
     "test": "nx run-many --target=test --all --coverage",
     "test:watch": "jest --watch",
     "publish:ngrx-firebase": "nx run ngrx-firebase:publish --tag=latest --otp",
+    "publish:ngrx-firebase:rc": "nx run ngrx-firebase:publish --tag=next --otp",
     "publish:merge-coverage-reports": "nx run merge-coverage-reports:publish --tag=latest --otp",
     "publish:fullcalendar-dayjs": "nx run fullcalendar-dayjs:publish --tag=latest --otp",
     "publish:all": "nx run-many --target=publish --all --parallel=1 --tag=latest --otp",
@@ -66,6 +67,6 @@
     "typescript": "5.7.3"
   },
   "nx": {
-    "includedScripts": [ ]
+    "includedScripts": []
   }
 }
