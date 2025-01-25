@@ -1,19 +1,20 @@
 import { of } from 'rxjs';
 
-import { fetchFirebaseStorageDocument } from './fetch-firebase-storage-document.operator';
-import { groupByAction } from './group-by-action.operator';
-import { mapToActions } from './map-to-actions.operator';
-import { mapDocumentActionToNgrxAction } from './map-document-action-to-ngrx-action.operator';
+import { fetchFirebaseStorageDocument } from '../fetch-firebase-storage-document.operator';
+import { groupByAction } from '../group-by-action.operator';
 
-jest.mock('./fetch-firebase-storage-document.operator');
-jest.mock('./group-by-action.operator');
-jest.mock('./map-to-actions.operator');
+import { mapDocumentActionToNgrxSignalStoreMethod } from './map-document-action-to-ngrx-signal-store-method.operator';
+import { mapToSignalStoreMethod } from './map-to-signal-store-method';
 
-const actionsMocks = {
-  loadNoResults: jest.fn() as any,
-  addMany: jest.fn() as any,
-  upsertMany: jest.fn() as any,
-  removeMany: jest.fn() as any,
+jest.mock('../fetch-firebase-storage-document.operator');
+jest.mock('../group-by-action.operator');
+jest.mock('./map-to-signal-store-method');
+
+const methodsMapMock = {
+  loadNoResults: 'loadNoResults',
+  addMany: 'addManyMethod',
+  upsertMany: 'upserManyMethod',
+  removeMany: 'removeManyMethod',
 };
 
 describe('map firebase document action to ngrx action operator', () => {
@@ -25,23 +26,23 @@ describe('map firebase document action to ngrx action operator', () => {
 
     (fetchFirebaseStorageDocument as jest.Mock).mockReturnValue((jest.fn().mockImplementation(data => data)));
     (groupByAction as jest.Mock).mockReturnValue((jest.fn().mockImplementation(data => data)));
-    (mapToActions as jest.Mock).mockReturnValue((jest.fn().mockImplementation(data => data)));
+    (mapToSignalStoreMethod as jest.Mock).mockReturnValue((jest.fn().mockImplementation(data => data)));
   });
 
-  describe('mapDocumentActionToNgrxAction', () => {
+  describe('mapDocumentActionToNgrxSignalStoreMethod', () => {
     describe('with no custom options values', () => {
       it('should have default options passed to observable stream operators', () => {
         const observable = of({ some: 'observableData' } as any);
 
         observable.pipe(
-          mapDocumentActionToNgrxAction(actionsMocks),
+          mapDocumentActionToNgrxSignalStoreMethod(methodsMapMock),
         ).subscribe(spy);
 
         expect(spy).toHaveBeenLastCalledWith({ some: 'observableData' });
 
         expect(fetchFirebaseStorageDocument).toHaveBeenLastCalledWith([], null);
         expect(groupByAction).toHaveBeenCalled();
-        expect(mapToActions).toHaveBeenLastCalledWith(actionsMocks, {
+        expect(mapToSignalStoreMethod).toHaveBeenLastCalledWith(methodsMapMock, {
           includeParentIdInPayload: false,
           parentIdPayloadKey: null,
           includeParentIdInNoResults: false,
@@ -56,7 +57,7 @@ describe('map firebase document action to ngrx action operator', () => {
         const observable = of({ some: 'observableData' } as any);
 
         observable.pipe(
-          mapDocumentActionToNgrxAction(actionsMocks, {
+          mapDocumentActionToNgrxSignalStoreMethod(methodsMapMock, {
             documentKeys: ['document', 'image'],
             angularFireStorage: { fire: 'storageMock' } as any,
             parentId: 'some parentId',
@@ -72,7 +73,7 @@ describe('map firebase document action to ngrx action operator', () => {
 
         expect(fetchFirebaseStorageDocument).toHaveBeenLastCalledWith(['document', 'image'], { fire: 'storageMock' });
         expect(groupByAction).toHaveBeenCalled();
-        expect(mapToActions).toHaveBeenLastCalledWith(actionsMocks, {
+        expect(mapToSignalStoreMethod).toHaveBeenLastCalledWith(methodsMapMock, {
           parentId: 'some parentId',
           includeParentIdInPayload: true,
           parentIdPayloadKey: 'parentKey',

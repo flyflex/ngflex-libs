@@ -1,13 +1,13 @@
 import { switchMap } from 'rxjs/operators';
 
-import { ActionOptions } from '../models/action-options.model';
+import { ActionOptions } from '../../models/action-options.model';
 import {
   ActionCreatorWithParentIdProp,
   ActionCreatorWithParentIdPropAndPayloadProp,
   ActionCreatorWithNoProp,
   ActionTypes,
-} from '../models/action-types.model';
-import { StoreAction } from '../models/store-action.model';
+} from '../../models/action-types.model';
+import { StoreAction } from '../../models/store-action.model';
 
 /**
  * Map grouped firebase document actions to NGRX actions

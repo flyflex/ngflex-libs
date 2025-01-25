@@ -1,8 +1,8 @@
 import * as fireStore from '@angular/fire/firestore';
 import { NEVER, from, of } from 'rxjs';
 
-import { wrapCollectionChangesToNgrx } from './wrap-collection-changes-to-ngrx.operator';
 import { mapDocumentActionToNgrxAction } from './map-document-action-to-ngrx-action.operator';
+import { wrapCollectionChangesToNgrx } from './wrap-collection-changes-to-ngrx.operator';
 
 jest.mock('@angular/fire/firestore', () => ({
   collectionChanges: jest.fn(),

@@ -1,10 +1,10 @@
 import { pipe } from 'rxjs';
 
-import { ActionTypes } from '../models/action-types.model';
-import { ActionOptions } from '../models/action-options.model';
+import { ActionOptions } from '../../models/action-options.model';
+import { ActionTypes } from '../../models/action-types.model';
+import { fetchFirebaseStorageDocument } from '../fetch-firebase-storage-document.operator';
 
-import { fetchFirebaseStorageDocument } from './fetch-firebase-storage-document.operator';
-import { groupByAction } from './group-by-action.operator';
+import { groupByAction } from '../group-by-action.operator';
 import { mapToActions } from './map-to-actions.operator';
 
 /**
